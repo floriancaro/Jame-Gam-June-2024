@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dsiq76xqgp12l"
-path="res://.godot/imported/beat2.wav-75fdda7644279abb7f50c6f541b40dad.sample"
+uid="uid://dvcxegsjljq3a"
+path="res://.godot/imported/underwater.wav-1dca73a03299816031dce3ea87d28a56.sample"
 
 [deps]
 
-source_file="res://assets/beat2.wav"
-dest_files=["res://.godot/imported/beat2.wav-75fdda7644279abb7f50c6f541b40dad.sample"]
+source_file="res://assets/underwater.wav"
+dest_files=["res://.godot/imported/underwater.wav-1dca73a03299816031dce3ea87d28a56.sample"]
 
 [params]
 

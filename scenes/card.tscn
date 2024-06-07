@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ljsurexgmi2y"]
+
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_ki2ds"]
+[ext_resource type="Texture2D" uid="uid://bnm7dqqakfumt" path="res://assets/card_fire.png" id="1_mgr8d"]
+[ext_resource type="Texture2D" uid="uid://bvx6ksdfjqy1u" path="res://assets/card_ice.png" id="2_vnw17"]
+[ext_resource type="Texture2D" uid="uid://dwfdwwruv6fpf" path="res://assets/card_portal.png" id="3_p7qq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnkwb"]
+size = Vector2(16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u0dsj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mgr8d")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vnw17")
+}],
+"loop": true,
+"name": &"ice",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p7qq4")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}]
+
+[node name="Card" type="Area2D"]
+z_index = 4
+scale = Vector2(0.6, 0.6)
+collision_mask = 2
+script = ExtResource("1_ki2ds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hnkwb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u0dsj")
+animation = &"fire"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

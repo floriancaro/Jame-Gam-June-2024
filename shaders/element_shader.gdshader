@@ -4,11 +4,21 @@ void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
-uniform float red = 1.0; // you can assign a default value to uniforms
+uniform bool fire = false; // you can assign a default value to uniforms
+uniform bool ice = false;
 
 void fragment(){
   COLOR = texture(TEXTURE, UV); // Read from texture
-  COLOR.r = red;
+  if (fire == true) {
+	COLOR.r = 1.0;
+	COLOR.b = 0.0;
+  } else if (ice == true) {
+	COLOR.r = 0.0;
+	COLOR.b = 1.0;
+  } else {
+	COLOR.r = 0.0;
+	COLOR.b = 0.0;
+  }
 }
 
 //void light() {

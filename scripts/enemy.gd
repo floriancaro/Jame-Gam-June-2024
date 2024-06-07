@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var SPEED = 100
-@onready var animtated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = $AnimatedSprite2D
 
 var direction = -1
 
@@ -12,10 +12,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	animated_sprite.play("move")
 	position.x += delta * SPEED * direction
 
 
 func _on_timer_timeout():
 	direction *= -1
-	animtated_sprite.flip_h = not animtated_sprite.flip_h
+	animated_sprite.flip_h = not animated_sprite.flip_h
 	

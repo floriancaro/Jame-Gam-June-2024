@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dsiq76xqgp12l"
-path="res://.godot/imported/beat2.wav-75fdda7644279abb7f50c6f541b40dad.sample"
+uid="uid://dga7xd8mn8afw"
+path="res://.godot/imported/loop_evil.wav-eb35a723aadbdf5257f2bd9898ea28c5.sample"
 
 [deps]
 
-source_file="res://assets/beat2.wav"
-dest_files=["res://.godot/imported/beat2.wav-75fdda7644279abb7f50c6f541b40dad.sample"]
+source_file="res://assets/loop_evil.wav"
+dest_files=["res://.godot/imported/loop_evil.wav-eb35a723aadbdf5257f2bd9898ea28c5.sample"]
 
 [params]
 
