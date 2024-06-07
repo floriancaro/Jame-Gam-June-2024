@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var SPEED = 250.0
 @export var JUMP_VELOCITY = -300.0
+@export var projectile_scene: PackedScene
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var audio_fire = $AudioFire
@@ -49,6 +50,10 @@ func _physics_process(delta):
 		
 
 	move_and_slide()
+
+
+func activate_ability():
+	var projectile = projectile_scene.instantiate()
 
 
 func card_pickup(ele):

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c07t5ec7o2cew"]
+
+[ext_resource type="Texture2D" uid="uid://cigvsiu58qpi7" path="res://assets/projectile.png" id="1_wqs18"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uy42h"]
+radius = 4.27632
+height = 20.4545
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0rb1"]
+atlas = ExtResource("1_wqs18")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v0db"]
+atlas = ExtResource("1_wqs18")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppp7t"]
+atlas = ExtResource("1_wqs18")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kwyyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0rb1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v0db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppp7t")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.04, 0.88)
+shape = SubResource("CapsuleShape2D_uy42h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kwyyi")

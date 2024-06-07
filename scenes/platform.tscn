@@ -1,12 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://1notlkfqt7bg"]
 
 [ext_resource type="Script" path="res://scripts/platform.gd" id="1_1c6ca"]
-[ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="1_cebo0"]
 [ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sheet_tile.png" id="1_mq117"]
+[ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="2_j67xq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fouja"]
-shader = ExtResource("1_cebo0")
-shader_parameter/red = 1.0
+shader = ExtResource("2_j67xq")
+shader_parameter/fire = false
+shader_parameter/ice = false
+shader_parameter/teleport = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e02w1"]
 size = Vector2(32, 5)
@@ -14,7 +16,7 @@ size = Vector2(32, 5)
 [node name="Platform" type="AnimatableBody2D"]
 z_index = 6
 position = Vector2(32, -16)
-scale = Vector2(2, 2)
+scale = Vector2(2, 1.5)
 collision_mask = 3
 script = ExtResource("1_1c6ca")
 metadata/_edit_group_ = true
