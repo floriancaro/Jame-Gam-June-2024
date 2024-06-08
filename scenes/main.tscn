@@ -330,7 +330,7 @@ script = ExtResource("1_2ml6p")
 unique_name_in_owner = true
 position = Vector2(-157, -86)
 SPEED = 200.0
-SPEED_DASH = 400.0
+SPEED_DASH = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(118.571, 17.1429)
