@@ -29,6 +29,7 @@ var in_animation = false
 var	ability_charged = true
 var is_dashing = false
 var extend_jump = false
+var teleport_direction = "x"
 
 
 func _ready():
@@ -49,7 +50,6 @@ func _physics_process(delta):
 				animated_sprite.play("jump_down")
 	
 	# handle abilities
-	var teleport_direction = "x"
 	if Input.is_action_pressed("ability") and ability_charged:
 		if element == "teleport":
 			if !animated_sprite.flip_h or Input.is_action_pressed("move_right"):
