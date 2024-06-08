@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var player = %Player
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var game_manager = %GameManager
 
 var rescued = false
 
@@ -19,3 +20,4 @@ func _process(delta):
 
 func _on_body_entered(body):
 	rescued = true
+	game_manager.get_node("Text/RescueLabel").show()

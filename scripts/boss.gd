@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var projectile_scene: PackedScene
-@export var health = 10
+@export var health = 1
 
 @onready var projectile_marker = $ProjectileMarker
 @onready var kill_timer = $KillTimer
