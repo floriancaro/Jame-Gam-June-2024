@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var SPEED = 250.0
 @export var SPEED_DASH = 500.0
 @export var JUMP_VELOCITY = -300.0
-@export var JUMP_VELOCITY_MAX = -400.0
 @export var projectile_scene: PackedScene
 
 @onready var animated_sprite = $AnimatedSprite2D
