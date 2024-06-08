@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://croo0qrvnuvs7"]
+
+[ext_resource type="Texture2D" uid="uid://b0r2qgsrawdjq" path="res://assets/sprites/enemy.png" id="1_p41lw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avocy"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ef5l"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc3pn"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjyht"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjjlj"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_istah"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjify"]
+atlas = ExtResource("1_p41lw")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mind"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avocy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ef5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc3pn")
+}],
+"loop": true,
+"name": &"T - rex",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjyht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjjlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_istah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjify")
+}],
+"loop": true,
+"name": &"T-rex dead",
+"speed": 5.0
+}]
+
+[node name="T rex" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8mind")
+animation = &"T - rex"
+autoplay = "T - rex"
+frame_progress = 0.162271

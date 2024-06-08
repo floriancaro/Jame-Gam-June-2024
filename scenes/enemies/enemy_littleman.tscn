@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq5hqi5hgu37i"]
+
+[ext_resource type="Texture2D" uid="uid://boq7dakic64hg" path="res://assets/sprites/enemy_littleblack.png" id="1_h15wb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aurhd"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rginx"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_numxm"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fywfu"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1o5r"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtrcb"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj038"]
+atlas = ExtResource("1_h15wb")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vhrx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aurhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rginx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_numxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fywfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1o5r")
+}],
+"loop": true,
+"name": &"Atack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtrcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj038")
+}],
+"loop": true,
+"name": &"Walking idle",
+"speed": 3.0
+}]
+
+[node name="Enemy" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1vhrx")
+animation = &"Atack"

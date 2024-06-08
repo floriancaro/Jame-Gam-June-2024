@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw0oj6meqqca5"]
+
+[ext_resource type="AudioStream" uid="uid://baw3xx0x4vg2n" path="res://assets/audio/music/main_song.mp3" id="1_4b1ql"]
+[ext_resource type="AudioStream" uid="uid://bgmw8c6mcy562" path="res://assets/audio/music/back_2.mp3" id="2_x4nay"]
+[ext_resource type="AudioStream" uid="uid://c4dte7cskd12t" path="res://assets/audio/music/kindarocky.wav" id="3_mjhhg"]
+
+[node name="Song" type="Node2D"]
+
+[node name="Main" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_4b1ql")
+autoplay = true
+
+[node name="Side" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_x4nay")
+
+[node name="Kinda rocky" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mjhhg")

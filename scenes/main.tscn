@@ -1,11 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjl5818jxnb4o"]
+[gd_scene load_steps=20 format=3 uid="uid://bjl5818jxnb4o"]
 
-[ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sheet_tile.png" id="1_sh0yu"]
-[ext_resource type="PackedScene" uid="uid://dn6mrl5ji1cpu" path="res://scenes/player.tscn" id="2_2ciu8"]
-[ext_resource type="PackedScene" uid="uid://1notlkfqt7bg" path="res://scenes/platform.tscn" id="3_28ixg"]
-[ext_resource type="PackedScene" uid="uid://bdgf7to23ik3f" path="res://scenes/enemy.tscn" id="4_dv6nf"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_2ml6p"]
+[ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sprites/tile_sheet_1.png" id="1_sh0yu"]
+[ext_resource type="PackedScene" uid="uid://dn6mrl5ji1cpu" path="res://scenes/bob/player.tscn" id="2_2ciu8"]
+[ext_resource type="PackedScene" uid="uid://bxeg30g2biypr" path="res://scenes/levels/level_x.tscn" id="3_0f7wx"]
+[ext_resource type="PackedScene" uid="uid://1notlkfqt7bg" path="res://scenes/level_elements/platform.tscn" id="3_28ixg"]
+[ext_resource type="PackedScene" uid="uid://oxvhlxt5dqof" path="res://scenes/enemies/anti_bob.tscn" id="4_akw7c"]
 [ext_resource type="PackedScene" uid="uid://bwiiinpodq7d7" path="res://scenes/killzone.tscn" id="5_cji1o"]
-[ext_resource type="PackedScene" uid="uid://ljsurexgmi2y" path="res://scenes/card.tscn" id="6_6mpsv"]
+[ext_resource type="PackedScene" uid="uid://ljsurexgmi2y" path="res://scenes/level_elements/card.tscn" id="6_6mpsv"]
+[ext_resource type="PackedScene" uid="uid://2ykx1yh3bawd" path="res://scenes/enemies/enemy.tscn" id="8_nm2g3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
@@ -172,21 +175,7 @@ texture = ExtResource("1_sh0yu")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_d8mtu")
 
-[sub_resource type="Animation" id="Animation_ucvoj"]
-resource_name = "move"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(650, 2.08165e-12), Vector2(520, 2.08165e-12)]
-}
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3gkjf"]
 
 [sub_resource type="Animation" id="Animation_ls632"]
 length = 0.001
@@ -203,15 +192,8 @@ tracks/0/keys = {
 "values": [Vector2(589, 4)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2p2k"]
-_data = {
-"RESET": SubResource("Animation_ls632"),
-"move": SubResource("Animation_ucvoj")
-}
-
-[sub_resource type="Animation" id="Animation_fqrdj"]
+[sub_resource type="Animation" id="Animation_ucvoj"]
 resource_name = "move"
-length = 1.5
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -220,10 +202,16 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(760, 2.08165e-12), Vector2(900, 2.08165e-12)]
+"values": [Vector2(650, 2.08165e-12), Vector2(520, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2p2k"]
+_data = {
+"RESET": SubResource("Animation_ls632"),
+"move": SubResource("Animation_ucvoj")
 }
 
 [sub_resource type="Animation" id="Animation_3axq2"]
@@ -253,6 +241,23 @@ tracks/1/keys = {
 "values": [Vector2(650, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_fqrdj"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(760, 2.08165e-12), Vector2(900, 2.08165e-12)]
+}
+
 [sub_resource type="Animation" id="Animation_d878t"]
 resource_name = "move_1"
 loop_mode = 2
@@ -276,11 +281,33 @@ _data = {
 "move_1": SubResource("Animation_d878t")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3gkjf"]
-
 [node name="Main" type="Node"]
+script = ExtResource("1_2ml6p")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_2ciu8")]
+position = Vector2(21, -28)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(118.571, 17.1429)
+scale = Vector2(1.42857, 1.42857)
+zoom = Vector2(3.5, 3.5)
+limit_bottom = 200
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("8_nm2g3")]
+position = Vector2(340, -16)
+
+[node name="AntiBob" parent="Enemies" instance=ExtResource("4_akw7c")]
+position = Vector2(444, -11)
+
+[node name="World" type="Node" parent="."]
+
+[node name="LevelX" parent="World" instance=ExtResource("3_0f7wx")]
+position = Vector2(-1328, -40)
+
+[node name="LevelTesting" type="TileMap" parent="World"]
+position = Vector2(0, -8)
 tile_set = SubResource("TileSet_xuj6u")
 format = 2
 layer_0/name = "background"
@@ -289,52 +316,44 @@ layer_1/name = "mid"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(0, 1, 3, 1, 1, 3, 2, 1, 3, 3, 1, 3, 4, 1, 3, 5, 1, 3, 6, 1, 3, 7, 1, 3, 8, 1, 3, 9, 1, 3, 10, 1, 3, 11, 1, 3, 12, 1, 3, 13, 1, 3, 14, 1, 3, 15, 1, 3, 16, 1, 3, 17, 1, 3, 18, 1, 3, 19, 1, 3, 20, 1, 3, 21, 1, 3, 22, 1, 3, 23, 1, 3, 24, 1, 3, 25, 1, 3, 26, 1, 3, 27, 1, 3, 28, 1, 3, 29, 1, 3, 65522, 1, 3, 65523, 1, 3, 65535, 1, 3, 65524, 1, 3, 65530, 1, 3, 65525, 1, 3, 65526, 1, 3, 65527, 1, 3, 65528, 1, 3, 65529, 1, 3, 65531, 1, 3, 65532, 1, 3, 65533, 1, 3, 65534, 1, 3)
 
-[node name="Player" parent="." instance=ExtResource("2_2ciu8")]
-position = Vector2(21, -28)
+[node name="WorldEdge" parent="World" instance=ExtResource("5_cji1o")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(118.571, 17.1429)
-scale = Vector2(1.42857, 1.42857)
-zoom = Vector2(3, 3)
-limit_bottom = 200
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WorldEdge"]
+position = Vector2(-2, 151)
+shape = SubResource("WorldBoundaryShape2D_3gkjf")
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Platforms" type="Node" parent="World"]
 
-[node name="Platform" parent="Platforms" instance=ExtResource("3_28ixg")]
+[node name="Platform" parent="World/Platforms" instance=ExtResource("3_28ixg")]
 position = Vector2(650, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Platforms/Platform"]
 libraries = {
 "": SubResource("AnimationLibrary_p2p2k")
 }
 autoplay = "move"
 
-[node name="Platform2" parent="Platforms" instance=ExtResource("3_28ixg")]
+[node name="Platform2" parent="World/Platforms" instance=ExtResource("3_28ixg")]
 position = Vector2(790, 2.08165e-12)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Platforms/Platform2"]
 libraries = {
 "": SubResource("AnimationLibrary_jrgk1")
 }
 autoplay = "move"
 
-[node name="Platform3" parent="Platforms" instance=ExtResource("3_28ixg")]
-position = Vector2(-192, -48)
+[node name="Platform3" parent="World/Platforms" instance=ExtResource("3_28ixg")]
+position = Vector2(-175, -48)
 
-[node name="Enemy" parent="." instance=ExtResource("4_dv6nf")]
-position = Vector2(270, -10)
+[node name="Cards" type="Node" parent="World"]
 
-[node name="Cards" type="Node" parent="."]
+[node name="CardFire" parent="World/Cards" instance=ExtResource("6_6mpsv")]
+position = Vector2(360, -39)
 
-[node name="CardFire" parent="Cards" instance=ExtResource("6_6mpsv")]
-position = Vector2(360, -34)
-
-[node name="CardIce" parent="Cards" instance=ExtResource("6_6mpsv")]
-position = Vector2(-110, -30)
+[node name="CardIce" parent="World/Cards" instance=ExtResource("6_6mpsv")]
+position = Vector2(-99, -30)
 element = "ice"
 
-[node name="WorldEdge" parent="Cards" instance=ExtResource("5_cji1o")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cards/WorldEdge"]
-position = Vector2(-2, 151)
-shape = SubResource("WorldBoundaryShape2D_3gkjf")
+[node name="CardTeleport" parent="World/Cards" instance=ExtResource("6_6mpsv")]
+position = Vector2(-176, -72)
+element = "teleport"

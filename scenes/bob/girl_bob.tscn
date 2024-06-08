@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmmpox4gpltau"]
+
+[ext_resource type="Texture2D" uid="uid://ig8e55xeh7ox" path="res://assets/sprites/smile girl bob.png" id="1_x76sp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ftt"]
+atlas = ExtResource("1_x76sp")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbnw6"]
+atlas = ExtResource("1_x76sp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4irq"]
+atlas = ExtResource("1_x76sp")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1ww7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ftt")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbnw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4irq")
+}],
+"loop": true,
+"name": &"worried",
+"speed": 5.0
+}]
+
+[node name="bob eta" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_m1ww7")
+animation = &"happy"
+autoplay = "worried"
+frame_progress = 0.847312

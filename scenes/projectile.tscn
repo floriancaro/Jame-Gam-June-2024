@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c07t5ec7o2cew"]
+[gd_scene load_steps=8 format=3 uid="uid://c07t5ec7o2cew"]
 
-[ext_resource type="Texture2D" uid="uid://cigvsiu58qpi7" path="res://assets/projectile.png" id="1_wqs18"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_jwgax"]
+[ext_resource type="Texture2D" uid="uid://cigvsiu58qpi7" path="res://assets/sprites/projectile.png" id="1_wqs18"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uy42h"]
 radius = 4.27632
@@ -32,7 +33,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1v0db")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_ppp7t")
 }],
 "loop": true,
@@ -41,6 +42,10 @@ animations = [{
 }]
 
 [node name="Projectile" type="Area2D"]
+z_index = 3
+scale = Vector2(0.6, 0.6)
+collision_mask = 4
+script = ExtResource("1_jwgax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3.04, 0.88)
@@ -48,3 +53,8 @@ shape = SubResource("CapsuleShape2D_uy42h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kwyyi")
+animation = &"fly"
+frame_progress = 0.830533
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

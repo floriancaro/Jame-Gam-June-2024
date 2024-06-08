@@ -1,10 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bba2buu12obj"]
+[gd_scene load_steps=5 format=3 uid="uid://bba2buu12obj"]
 
-[ext_resource type="AudioStream" uid="uid://t6736boccnui" path="res://assets/123.wav" id="1_l7xks"]
+[ext_resource type="AudioStream" uid="uid://t6736boccnui" path="res://assets/audio/music/123.wav" id="1_l7xks"]
+[ext_resource type="AudioStream" uid="uid://baw3xx0x4vg2n" path="res://assets/audio/music/main_song.mp3" id="2_0hing"]
+[ext_resource type="AudioStream" uid="uid://bgmw8c6mcy562" path="res://assets/audio/music/back_2.mp3" id="3_m6yhc"]
+[ext_resource type="AudioStream" uid="uid://cphslilpvvbpm" path="res://assets/audio/music/kindarocky.wav" id="4_228ud"]
 
 [node name="Music" type="Node"]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="123" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_l7xks")
+bus = &"Music"
+
+[node name="Main" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0hing")
 autoplay = true
+bus = &"Music"
+
+[node name="Side" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m6yhc")
+bus = &"Music"
+
+[node name="Kinda rocky" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_228ud")
 bus = &"Music"
