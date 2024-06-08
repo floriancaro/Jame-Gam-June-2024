@@ -115,7 +115,6 @@ scale = Vector2(7.05859, 5.25781)
 sprite_frames = SubResource("SpriteFrames_bjsfl")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.784943
 
 [node name="ProjectileTimer" type="Timer" parent="."]
 wait_time = 3.0
