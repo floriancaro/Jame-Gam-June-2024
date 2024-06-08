@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://k2tepw12pc7c"]
+
+[ext_resource type="Texture2D" uid="uid://cg0kng3fql7j1" path="res://assets/sprites/corrupt bone plant.png" id="1_omy03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upa1q"]
+atlas = ExtResource("1_omy03")
+region = Rect2(0, 0, 48, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3xe1"]
+atlas = ExtResource("1_omy03")
+region = Rect2(48, 0, 48, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnryl"]
+atlas = ExtResource("1_omy03")
+region = Rect2(96, 0, 48, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge2vg"]
+atlas = ExtResource("1_omy03")
+region = Rect2(144, 0, 48, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13ose"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upa1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3xe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnryl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge2vg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Corrupted bineplant" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(66, -4)
+sprite_frames = SubResource("SpriteFrames_13ose")
+autoplay = "default"
+frame_progress = 0.300928
