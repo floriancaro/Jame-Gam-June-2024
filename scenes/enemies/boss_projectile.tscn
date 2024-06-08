@@ -67,8 +67,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5l56"]
-radius = 10.0
-height = 44.0
+radius = 12.0
+height = 52.0
 
 [node name="BossProjectile" type="Area2D"]
 z_index = 2
@@ -84,7 +84,7 @@ animation = &"projectile1"
 frame_progress = 0.0710452
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18, -10)
+position = Vector2(14, -10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f5l56")
 

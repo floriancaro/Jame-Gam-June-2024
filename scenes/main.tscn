@@ -352,7 +352,7 @@ position = Vector2(167, -16)
 position = Vector2(444, -11)
 
 [node name="Boss" parent="Enemies" instance=ExtResource("10_w4yr1")]
-position = Vector2(1356, -46)
+position = Vector2(1448, -48)
 
 [node name="World" type="Node" parent="."]
 
