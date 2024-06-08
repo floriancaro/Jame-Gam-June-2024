@@ -186,6 +186,10 @@ func fire_projectile():
 
 func card_pickup(ele):
 	element = ele
+	if element == "mega":
+		get_parent().get_node("Enemies/Boss").kill()
+	else:
+		in_animation = true
 	if element == "fire":
 		audio_fire.play()
 		animated_sprite.play("henshi_fire")
@@ -201,7 +205,6 @@ func card_pickup(ele):
 		animated_sprite.play("henshi_teleport")
 		animated_sprite.material.set_shader_parameter("teleport", true)
 		ability_timer.wait_time = 2.0
-	in_animation = true
 
 
 func _on_animated_sprite_2d_animation_finished():

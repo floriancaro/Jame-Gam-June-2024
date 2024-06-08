@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjl5818jxnb4o"]
+[gd_scene load_steps=31 format=3 uid="uid://bjl5818jxnb4o"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2ml6p"]
 [ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sprites/tile_sheet_1.png" id="1_sh0yu"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dkdbpk2cdn3vr" path="res://scenes/8bit/8_bit_hero.tscn" id="13_julrh"]
 [ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="14_epuum"]
 [ext_resource type="PackedScene" uid="uid://dcivh3l84dfu6" path="res://scenes/8bit/8_bit_place.tscn" id="14_xxtbg"]
+[ext_resource type="PackedScene" uid="uid://dusberst8kbyg" path="res://scenes/MEGACAARD/mega_card.tscn" id="14_yleam"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
@@ -318,7 +319,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 1.7, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1600, -10), Vector2(1600, -10), Vector2(1600, -138), Vector2(1600, -138)]
+"values": [Vector2(1200, -60), Vector2(1200, -60), Vector2(1200, -100), Vector2(1200, -100)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yi8jf"]
@@ -332,7 +333,7 @@ script = ExtResource("1_2ml6p")
 
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
-position = Vector2(-157, -65)
+position = Vector2(968, -65)
 SPEED = 200.0
 SPEED_DASH = 300.0
 TELEPORT_DIST = 80.0
@@ -421,6 +422,15 @@ libraries = {
 }
 autoplay = "move"
 
+[node name="Platform5" parent="World/Platforms" instance=ExtResource("3_28ixg")]
+position = Vector2(1600, -8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Platforms/Platform5"]
+libraries = {
+"": SubResource("AnimationLibrary_yi8jf")
+}
+autoplay = "move"
+
 [node name="Cards" type="Node" parent="World"]
 
 [node name="CardFire" parent="World/Cards" instance=ExtResource("6_6mpsv")]
@@ -437,6 +447,9 @@ element = "ice"
 [node name="CardTeleport" parent="World/Cards" instance=ExtResource("6_6mpsv")]
 position = Vector2(-176, -72)
 element = "teleport"
+
+[node name="MegaCard" parent="World/Cards" instance=ExtResource("14_yleam")]
+position = Vector2(1201, -129)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

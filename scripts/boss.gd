@@ -8,6 +8,12 @@ extends Area2D
 @onready var kill_timer = $KillTimer
 
 
+func _process(delta):
+	pass
+	#if health == 0:
+		#scale *= .98
+
+
 func _on_body_entered(body):
 	kill_timer.start()
 	if body.has_method("hit"):
@@ -18,6 +24,13 @@ func fire_projectile():
 	var projectile = projectile_scene.instantiate()
 	projectile.position = projectile_marker.global_position
 	get_tree().get_root().add_child(projectile)
+
+
+func kill():
+	health = 0
+	scale.x = .75
+	scale.y = .75
+	animated_sprite.play("boss_death")
 
 
 func hit():
