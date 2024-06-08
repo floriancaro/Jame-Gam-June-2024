@@ -20,8 +20,7 @@ void fragment(){
 	COLOR.r = 1.0;
 	COLOR.b = 1.0;
   } else {
-	COLOR.r = 0.0;
-	COLOR.b = 0.0;
+    COLOR = texture(TEXTURE, UV); // Read from texture
   }
 }
 
