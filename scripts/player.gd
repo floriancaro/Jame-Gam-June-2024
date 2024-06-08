@@ -76,13 +76,14 @@ func _physics_process(delta):
 				teleport_arrow_left.visible = false
 		else:
 			activate_ability(teleport_direction)
-		
-	if Input.is_action_just_released("ability") and element == "teleport":
-		teleport_arrow_up.visible = false
-		teleport_arrow_down.visible = false
-		teleport_arrow_left.visible = false
-		teleport_arrow_right.visible = false
-		activate_ability(teleport_direction)
+	
+	if element == "teleport":
+		if Input.is_action_just_released("ability"):
+			teleport_arrow_up.visible = false
+			teleport_arrow_down.visible = false
+			teleport_arrow_left.visible = false
+			teleport_arrow_right.visible = false
+			activate_ability(teleport_direction)
 
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
