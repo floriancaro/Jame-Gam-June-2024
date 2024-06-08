@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://wotpla124xs" path="res://scenes/enemies/boss.tscn" id="10_w4yr1"]
 [ext_resource type="PackedScene" uid="uid://ca6hawmkmwedf" path="res://scenes/she_bob.tscn" id="11_t71a6"]
 [ext_resource type="FontFile" uid="uid://bujltk7dyjc1a" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="12_eaoke"]
-[ext_resource type="PackedScene" uid="uid://dkdbpk2cdn3vr" path="res://scenes/8 bit/8_bit_hero.tscn" id="13_julrh"]
+[ext_resource type="PackedScene" uid="uid://dkdbpk2cdn3vr" path="res://scenes/8bit/8_bit_hero.tscn" id="13_julrh"]
 [ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="14_epuum"]
-[ext_resource type="PackedScene" uid="uid://dcivh3l84dfu6" path="res://scenes/8 bit/8_bit_place.tscn" id="14_xxtbg"]
+[ext_resource type="PackedScene" uid="uid://dcivh3l84dfu6" path="res://scenes/8bit/8_bit_place.tscn" id="14_xxtbg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
