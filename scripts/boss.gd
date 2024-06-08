@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var projectile_scene: PackedScene
+@export var health = 10
 
 @onready var projectile_marker = $ProjectileMarker
 @onready var kill_timer = $KillTimer
@@ -16,6 +17,12 @@ func fire_projectile():
 	var projectile = projectile_scene.instantiate()
 	projectile.position = projectile_marker.global_position
 	get_tree().get_root().add_child(projectile)
+
+
+func hit():
+	health -= 1
+	if health == 0:
+		queue_free()
 
 
 func _on_projectile_timer_timeout():

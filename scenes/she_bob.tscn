@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca6hawmkmwedf"]
+
+[ext_resource type="Texture2D" uid="uid://bt0ge7g8rgveh" path="res://assets/sprites/smile girl bob.png" id="1_kijio"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_178km"]
+radius = 13.0384
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uprbn"]
+atlas = ExtResource("1_kijio")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb4qp"]
+atlas = ExtResource("1_kijio")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk0dl"]
+atlas = ExtResource("1_kijio")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4t0q"]
+atlas = ExtResource("1_kijio")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l7s1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uprbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb4qp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk0dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4t0q")
+}],
+"loop": true,
+"name": &"worried",
+"speed": 5.0
+}]
+
+[node name="SheBob" type="Area2D"]
+z_index = 6
+scale = Vector2(0.6, 0.6)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_178km")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2l7s1")
+animation = &"idle"
+autoplay = "idle"

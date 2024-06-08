@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bjl5818jxnb4o"]
+[gd_scene load_steps=22 format=3 uid="uid://bjl5818jxnb4o"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2ml6p"]
 [ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sprites/tile_sheet_1.png" id="1_sh0yu"]
-[ext_resource type="PackedScene" uid="uid://dn6mrl5ji1cpu" path="res://scenes/bob/player.tscn" id="2_2ciu8"]
+[ext_resource type="PackedScene" uid="uid://dn6mrl5ji1cpu" path="res://scenes/player.tscn" id="2_2ciu8"]
 [ext_resource type="PackedScene" uid="uid://bxeg30g2biypr" path="res://scenes/levels/level_x.tscn" id="3_0f7wx"]
 [ext_resource type="PackedScene" uid="uid://1notlkfqt7bg" path="res://scenes/level_elements/platform.tscn" id="3_28ixg"]
 [ext_resource type="PackedScene" uid="uid://oxvhlxt5dqof" path="res://scenes/enemies/anti_bob.tscn" id="4_akw7c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ljsurexgmi2y" path="res://scenes/level_elements/card.tscn" id="6_6mpsv"]
 [ext_resource type="PackedScene" uid="uid://2ykx1yh3bawd" path="res://scenes/enemies/enemy.tscn" id="8_nm2g3"]
 [ext_resource type="PackedScene" uid="uid://wotpla124xs" path="res://scenes/enemies/boss.tscn" id="10_w4yr1"]
+[ext_resource type="PackedScene" uid="uid://ca6hawmkmwedf" path="res://scenes/she_bob.tscn" id="11_t71a6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
@@ -296,6 +297,9 @@ scale = Vector2(1.42857, 1.42857)
 zoom = Vector2(3.5, 3.5)
 limit_bottom = 200
 
+[node name="SheBob" parent="." instance=ExtResource("11_t71a6")]
+position = Vector2(1456, -176)
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_nm2g3")]
@@ -350,6 +354,9 @@ autoplay = "move"
 
 [node name="Platform3" parent="World/Platforms" instance=ExtResource("3_28ixg")]
 position = Vector2(-175, -48)
+
+[node name="PlatformSheBob" parent="World/Platforms" instance=ExtResource("3_28ixg")]
+position = Vector2(1456, -168)
 
 [node name="Cards" type="Node" parent="World"]
 
