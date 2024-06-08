@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dn6mrl5ji1cpu"]
+[gd_scene load_steps=59 format=3 uid="uid://dn6mrl5ji1cpu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vfal1"]
 [ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="2_jywi2"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bavao0rqphpeg" path="res://assets/audio/sfx/fire_breath.mp3" id="5_gle84"]
 [ext_resource type="Texture2D" uid="uid://cj6pxqhtmtr7u" path="res://assets/sprites/bob_teleport_henshi.png" id="5_pytg3"]
 [ext_resource type="AudioStream" uid="uid://bfpisan5l34vw" path="res://assets/audio/sfx/ice_transform.mp3" id="6_22324"]
+[ext_resource type="Texture2D" uid="uid://crdhqr3aurjo6" path="res://assets/sprites/bob_idle.png" id="8_vqe4b"]
 [ext_resource type="AudioStream" uid="uid://bdd6xc3gtqgsy" path="res://assets/audio/sfx/sound_3.wav" id="14_18t4n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv7u8"]
@@ -99,21 +100,25 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("5_pytg3")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uuy4s"]
-atlas = ExtResource("5_dx8qy")
-region = Rect2(0, 40, 32, 40)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqdd2"]
+atlas = ExtResource("8_vqe4b")
+region = Rect2(0, 0, 34, 39)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_73765"]
-atlas = ExtResource("5_dx8qy")
-region = Rect2(32, 40, 32, 40)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwqac"]
+atlas = ExtResource("8_vqe4b")
+region = Rect2(34, 0, 34, 39)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bj2ex"]
-atlas = ExtResource("5_dx8qy")
-region = Rect2(64, 40, 32, 40)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wqmk"]
+atlas = ExtResource("8_vqe4b")
+region = Rect2(68, 0, 34, 39)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mq5rq"]
-atlas = ExtResource("5_dx8qy")
-region = Rect2(96, 40, 32, 40)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yqh3"]
+atlas = ExtResource("8_vqe4b")
+region = Rect2(102, 0, 34, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkrls"]
+atlas = ExtResource("8_vqe4b")
+region = Rect2(136, 0, 34, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wddjf"]
 atlas = ExtResource("5_dx8qy")
@@ -166,6 +171,22 @@ region = Rect2(0, 0, 34, 39)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wiyk"]
 atlas = ExtResource("4_obk5i")
 region = Rect2(34, 0, 34, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuy4s"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(0, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73765"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(32, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj2ex"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(64, 40, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq5rq"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(96, 40, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_if27w"]
 animations = [{
@@ -248,16 +269,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uuy4s")
+"texture": SubResource("AtlasTexture_jqdd2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_73765")
+"texture": SubResource("AtlasTexture_bwqac")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bj2ex")
+"texture": SubResource("AtlasTexture_2wqmk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mq5rq")
+"texture": SubResource("AtlasTexture_7yqh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkrls")
 }],
 "loop": true,
 "name": &"idle",
@@ -324,6 +348,23 @@ animations = [{
 "loop": true,
 "name": &"old_move",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuy4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73765")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj2ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq5rq")
+}],
+"loop": true,
+"name": &"oldidle",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -343,7 +384,7 @@ shape = SubResource("CircleShape2D_iv7u8")
 material = SubResource("ShaderMaterial_crcx3")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_if27w")
-animation = &"jump"
+animation = &"idle"
 speed_scale = 1.1
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]
