@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var projectile_marker = $ProjectileMarker
+@onready var audio_jump = $Audiojump
 @onready var audio_fire = $AudioFire
 @onready var audio_ice = $AudioIce
 @onready var audio_death = $AudioDeath
@@ -91,6 +92,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		jump_timer.start()
 		extend_jump = true
+		audio_jump.play()
 	if Input.is_action_just_released("jump"):
 		extend_jump = false
 	if extend_jump:
