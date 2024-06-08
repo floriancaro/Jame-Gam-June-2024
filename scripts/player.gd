@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var SPEED = 250.0
 @export var SPEED_DASH = 500.0
 @export var JUMP_VELOCITY = -300.0
+@export var TELEPORT_DIST = 100.0
 @export var projectile_scene: PackedScene
 @export var health = 5
 
@@ -160,13 +161,13 @@ func teleport(port_dir):
 	in_animation = true
 	if port_dir == "x":
 		if animated_sprite.flip_h:
-			position.x -= 100
+			position.x -= TELEPORT_DIST
 		else:
-			position.x += 100
+			position.x += TELEPORT_DIST
 	elif port_dir == "up":
-		position.y -= 100
+		position.y -= TELEPORT_DIST
 	elif port_dir == "down":
-		position.y += 100
+		position.y += TELEPORT_DIST
 
 
 func fire_projectile():
