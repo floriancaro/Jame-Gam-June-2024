@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dn6mrl5ji1cpu"]
+[gd_scene load_steps=53 format=3 uid="uid://dn6mrl5ji1cpu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vfal1"]
 [ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="2_jywi2"]
@@ -119,14 +119,6 @@ region = Rect2(120, 0, 40, 40)
 atlas = ExtResource("8_jnu2g")
 region = Rect2(160, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5bxdn"]
-atlas = ExtResource("5_dx8qy")
-region = Rect2(0, 80, 32, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_og7sr"]
-atlas = ExtResource("5_dx8qy")
-region = Rect2(32, 80, 32, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wddjf"]
 atlas = ExtResource("5_dx8qy")
 region = Rect2(64, 80, 32, 40)
@@ -138,6 +130,18 @@ region = Rect2(96, 80, 32, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyohi"]
 atlas = ExtResource("5_dx8qy")
 region = Rect2(32, 80, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isady"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(32, 80, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vnv7"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(64, 80, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0u0m"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(96, 80, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i40ty"]
 atlas = ExtResource("5_dx8qy")
@@ -263,24 +267,37 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5bxdn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_og7sr")
-}, {
-"duration": 0.4,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_wddjf")
 }, {
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_sruks")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_cyohi")
 }],
 "loop": false,
 "name": &"jump",
-"speed": 4.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isady")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vnv7")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_g0u0m")
+}],
+"loop": true,
+"name": &"jump_up",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -332,8 +349,7 @@ material = SubResource("ShaderMaterial_crcx3")
 position = Vector2(0, -13)
 scale = Vector2(0.8, 0.75)
 sprite_frames = SubResource("SpriteFrames_if27w")
-animation = &"idle"
-frame_progress = 0.222444
+animation = &"jump_up"
 speed_scale = 1.1
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]
@@ -359,6 +375,11 @@ bus = &"SFX"
 wait_time = 0.5
 one_shot = true
 
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AbilityTimer" to="." method="_on_ability_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

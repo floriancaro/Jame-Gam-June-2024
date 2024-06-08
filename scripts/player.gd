@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var SPEED = 250.0
 @export var SPEED_DASH = 500.0
 @export var JUMP_VELOCITY = -300.0
+@export var JUMP_VELOCITY_MAX = -400.0
 @export var projectile_scene: PackedScene
 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -13,6 +14,7 @@ extends CharacterBody2D
 @onready var audio_death = $AudioDeath
 @onready var collision_shape = $CollisionShape2D
 @onready var death_timer = $DeathTimer
+@onready var jump_timer = $JumpTimer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -20,6 +22,7 @@ var element = "nature"
 var in_animation = false
 var	ability_charged = true
 var is_dashing = false
+var extend_jump = false
 
 
 func _ready():
@@ -32,15 +35,24 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if not in_animation:
-			animated_sprite.play("jump")
+			if velocity.y < 0:
+				animated_sprite.play("jump_up")
+			elif velocity.y >= 0:
+				animated_sprite.play("jump_down")
 	
 	# handle abilities
 	if Input.is_action_pressed("ability") and ability_charged:
 		activate_ability()
 
-	# Handle jump.
+	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_timer.start()
+		extend_jump = true
+	if Input.is_action_just_released("jump"):
+		extend_jump = false
+	if extend_jump:
+		velocity.y -= 5
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
@@ -152,3 +164,7 @@ func _on_ability_timer_timeout():
 
 func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
+
+
+func _on_jump_timer_timeout():
+	extend_jump = false
