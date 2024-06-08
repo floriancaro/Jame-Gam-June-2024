@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dusberst8kbyg"]
+
+[ext_resource type="Script" path="res://scripts/mega_card.gd" id="1_oyqet"]
+[ext_resource type="Texture2D" uid="uid://cmekri3fjvca6" path="res://assets/sprites/MEGACARD.png" id="1_twj8m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smucb"]
+size = Vector2(71, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihu5l"]
+atlas = ExtResource("1_twj8m")
+region = Rect2(0, 0, 116, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpkji"]
+atlas = ExtResource("1_twj8m")
+region = Rect2(116, 0, 116, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqpir"]
+atlas = ExtResource("1_twj8m")
+region = Rect2(232, 0, 116, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0wkv"]
+atlas = ExtResource("1_twj8m")
+region = Rect2(348, 0, 116, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_at47o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihu5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpkji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqpir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0wkv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="MegaCard" type="Area2D"]
+scale = Vector2(0.4, 0.4)
+collision_mask = 2
+script = ExtResource("1_oyqet")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_smucb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_at47o")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.548151
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
