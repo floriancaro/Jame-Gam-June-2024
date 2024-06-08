@@ -1,11 +1,11 @@
 extends Node2D
 
-@onready var sprite_hp0 = $HP0
-@onready var sprite_hp1 = $HP1
-@onready var sprite_hp2 = $HP2
-@onready var sprite_hp3 = $HP3
-@onready var sprite_hp4 = $HP4
-@onready var sprite_hp5 = $HP5
+@onready var sprite_hp0 = $Camera2D/HP0
+@onready var sprite_hp1 = $Camera2D/HP1
+@onready var sprite_hp2 = $Camera2D/HP2
+@onready var sprite_hp3 = $Camera2D/HP3
+@onready var sprite_hp4 = $Camera2D/HP4
+@onready var sprite_hp5 = $Camera2D/HP5
 @onready var player = %Player
 
 # Called when the node enters the scene tree for the first time.
