@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/health.gd" id="1_juyki"]
 [ext_resource type="Texture2D" uid="uid://bssrsbm224ils" path="res://assets/sprites/hp_tile.png" id="3_3fqo8"]
-[ext_resource type="Texture2D" path="res://assets/sprites/hp 6.png" id="6_ppiug"]
+[ext_resource type="Texture2D" uid="uid://c81rv75dkuxv" path="res://assets/sprites/hp 6.png" id="6_ppiug"]
 
 [node name="HealthBar" type="Node2D"]
+position = Vector2(-116, 103)
 script = ExtResource("1_juyki")
 
 [node name="HP0" type="Sprite2D" parent="."]

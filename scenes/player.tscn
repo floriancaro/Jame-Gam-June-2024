@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dn6mrl5ji1cpu"]
+[gd_scene load_steps=61 format=3 uid="uid://dn6mrl5ji1cpu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vfal1"]
 [ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="2_jywi2"]
@@ -8,14 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://df14enb3vondb" path="res://assets/sprites/bob_fire.png" id="4_62hlp"]
 [ext_resource type="Texture2D" uid="uid://0dbdv60jvlba" path="res://assets/sprites/bob_running.png" id="4_obk5i"]
 [ext_resource type="Texture2D" uid="uid://jqrhxxowai4e" path="res://assets/sprites/bob_center.png" id="5_dx8qy"]
-[ext_resource type="AudioStream" uid="uid://bavao0rqphpeg" path="res://assets/audio/sfx/fire_breath.mp3" id="5_gle84"]
 [ext_resource type="Texture2D" uid="uid://cj6pxqhtmtr7u" path="res://assets/sprites/bob_teleport_henshi.png" id="5_pytg3"]
-[ext_resource type="AudioStream" uid="uid://bfpisan5l34vw" path="res://assets/audio/sfx/ice_transform.mp3" id="6_22324"]
 [ext_resource type="Texture2D" uid="uid://flt3vj4o5vct" path="res://assets/sprites/bob_sheet.png" id="8_jnu2g"]
 [ext_resource type="Texture2D" uid="uid://cug2w14a5djer" path="res://assets/sprites/bob_teleport.png" id="11_denu4"]
+[ext_resource type="AudioStream" uid="uid://cloqcu84si1f" path="res://assets/audio/sfx/plasma-gun-fire-162136.mp3" id="12_cdagc"]
+[ext_resource type="AudioStream" uid="uid://dybkjwduo88xj" path="res://assets/audio/sfx/ice.mp3" id="13_o66nq"]
 [ext_resource type="AudioStream" uid="uid://bdd6xc3gtqgsy" path="res://assets/audio/sfx/sound_3.wav" id="14_18t4n"]
 [ext_resource type="Texture2D" uid="uid://mg0dg2mlscov" path="res://assets/sprites/arrow.png" id="15_r8glf"]
 [ext_resource type="AudioStream" uid="uid://bemirgcfc6t4b" path="res://assets/audio/sfx/sound_1.wav" id="16_vlw3w"]
+[ext_resource type="AudioStream" uid="uid://p6iftbb7gjwt" path="res://assets/audio/sfx/thunder-124463.mp3" id="17_26kpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca4kd"]
 size = Vector2(16, 16)
@@ -392,11 +393,12 @@ speed_scale = 1.1
 position = Vector2(20, -16)
 
 [node name="AudioFire" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_gle84")
+stream = ExtResource("12_cdagc")
+max_distance = 400.0
 bus = &"SFX"
 
 [node name="AudioIce" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_22324")
+stream = ExtResource("13_o66nq")
 bus = &"SFX"
 
 [node name="AbilityTimer" type="Timer" parent="."]
@@ -448,6 +450,9 @@ wait_time = 0.2
 stream = ExtResource("16_vlw3w")
 volume_db = -7.645
 panning_strength = 0.7
+
+[node name="Audioteleport" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_26kpi")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AbilityTimer" to="." method="_on_ability_timer_timeout"]

@@ -228,9 +228,11 @@ target_position = Vector2(-75, 50)
 
 [node name="AudioCirclespin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_10rii")
+max_distance = 400.0
 
 [node name="AudioSimple" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_t4bkg")
+max_distance = 400.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

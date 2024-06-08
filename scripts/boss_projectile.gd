@@ -2,6 +2,7 @@ extends Area2D
 
 @export var SPEED = 250
 
+
 @onready var animated_sprite = $AnimatedSprite2D
 
 var direction = -1
@@ -15,6 +16,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.has_method("hit"):
 		body.hit()
+		
 		queue_free()
 
 

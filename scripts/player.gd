@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var TELEPORT_DIST = 100.0
 @export var projectile_scene: PackedScene
 @export var health = 5
+@onready var audio_teleport = $Audioteleport
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var projectile_marker = $ProjectileMarker
@@ -203,7 +204,7 @@ func card_pickup(ele):
 		animated_sprite.material.set_shader_parameter("ice", true)
 		ability_timer.wait_time = 0.5
 	elif element == "teleport":
-		audio_ice.play()
+		audio_teleport.play()
 		animated_sprite.play("henshi_teleport")
 		animated_sprite.material.set_shader_parameter("teleport", true)
 		ability_timer.wait_time = 2.0

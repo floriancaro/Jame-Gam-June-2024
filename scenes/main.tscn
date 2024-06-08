@@ -345,13 +345,15 @@ zoom = Vector2(3.5, 3.5)
 limit_bottom = 200
 
 [node name="HealthBar" parent="Player" instance=ExtResource("3_tnnck")]
-position = Vector2(400, -240)
+position = Vector2(-93.3333, -131.667)
+scale = Vector2(0.736855, 0.57536)
 
 [node name="HealthLabel" type="Label" parent="Player"]
-offset_left = 313.334
-offset_top = -248.334
-offset_right = 353.334
-offset_bottom = -225.334
+offset_left = -151.667
+offset_top = -135.0
+offset_right = -111.667
+offset_bottom = -112.0
+scale = Vector2(0.634651, 0.666007)
 theme_override_fonts/font = ExtResource("12_eaoke")
 text = "HP"
 
