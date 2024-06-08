@@ -7,6 +7,9 @@ extends Area2D
 @onready var collision_spin = $CollisionShapeSpin
 @onready var kill_timer = $KillTimer
 @onready var raycast = $RayCast2D
+@onready var audio_circlespin = $AudioCirclespin
+@onready var audio_simple = $AudioSimple
+
 
 @export var SPEED = 100
 @export var direction = -1
@@ -66,17 +69,21 @@ func _on_attack_timer_timeout():
 	var random_int = rng.randi_range(0, 10)
 	# spin attack
 	if random_int < 5:
+		audio_simple.play()
 		animated_sprite.play("attack_simple")
 		collision_idle.set_deferred("disabled", true)
 		collision_simple.set_deferred("disabled", false)
 	# spin attack
 	elif random_int < 9:
+		audio_simple.play()
 		animated_sprite.play("attack_side")
+		
 		collision_idle.set_deferred("disabled", true)
 		collision_side.set_deferred("disabled", false)
 	# spin attack
 	else:
 		animated_sprite.play("attack_spin")
+		audio_circlespin.play()
 		collision_idle.set_deferred("disabled", true)
 		collision_spin.set_deferred("disabled", false)
 

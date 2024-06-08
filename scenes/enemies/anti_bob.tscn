@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://oxvhlxt5dqof"]
+[gd_scene load_steps=31 format=3 uid="uid://oxvhlxt5dqof"]
 
 [ext_resource type="Script" path="res://scripts/anti_bob.gd" id="1_1ywdo"]
 [ext_resource type="Texture2D" uid="uid://cvd1dk52xa66n" path="res://assets/sprites/anti_bob_1.png" id="1_r65bs"]
 [ext_resource type="Texture2D" uid="uid://8vdvm7e364ms" path="res://assets/sprites/anti_bob_spin.png" id="2_wuupa"]
 [ext_resource type="Texture2D" uid="uid://b4lx27xpcey2j" path="res://assets/sprites/anti_bob_2.png" id="3_nee3i"]
+[ext_resource type="AudioStream" uid="uid://dsb8h8m33cd5g" path="res://assets/audio/sfx/spin.wav" id="5_10rii"]
+[ext_resource type="AudioStream" uid="uid://bw0x78oqqx5ju" path="res://assets/audio/sfx/swing.mp3" id="6_t4bkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feesp"]
 atlas = ExtResource("1_r65bs")
@@ -223,6 +225,12 @@ autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-75, 50)
+
+[node name="AudioCirclespin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_10rii")
+
+[node name="AudioSimple" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_t4bkg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

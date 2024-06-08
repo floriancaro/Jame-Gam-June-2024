@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dkdbpk2cdn3vr" path="res://scenes/8bit/8_bit_hero.tscn" id="13_julrh"]
 [ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="14_epuum"]
 [ext_resource type="PackedScene" uid="uid://dcivh3l84dfu6" path="res://scenes/8bit/8_bit_place.tscn" id="14_xxtbg"]
-[ext_resource type="PackedScene" uid="uid://dusberst8kbyg" path="res://scenes/MEGACAARD/mega_card.tscn" id="14_yleam"]
+[ext_resource type="PackedScene" path="res://scenes/MEGACAARD/mega_card.tscn" id="14_yleam"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
@@ -333,7 +333,7 @@ script = ExtResource("1_2ml6p")
 
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
-position = Vector2(968, -65)
+position = Vector2(326, -53)
 SPEED = 200.0
 SPEED_DASH = 300.0
 TELEPORT_DIST = 80.0
