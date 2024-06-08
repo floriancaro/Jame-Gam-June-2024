@@ -344,7 +344,6 @@ limit_bottom = 200
 
 [node name="HealthBar" parent="Player" instance=ExtResource("3_tnnck")]
 position = Vector2(400, -240)
-scale = Vector2(1, 1)
 
 [node name="HealthLabel" type="Label" parent="Player"]
 offset_left = 313.334

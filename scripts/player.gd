@@ -15,6 +15,11 @@ extends CharacterBody2D
 @onready var collision_shape = $CollisionShape2D
 @onready var death_timer = $DeathTimer
 @onready var jump_timer = $JumpTimer
+@onready var teleport_arrow_up = $TeleportArrowUp
+@onready var teleport_arrow_down = $TeleportArrowDown
+@onready var teleport_arrow_left = $TeleportArrowLeft
+@onready var teleport_arrow_right = $TeleportArrowRight
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -43,8 +48,40 @@ func _physics_process(delta):
 				animated_sprite.play("jump_down")
 	
 	# handle abilities
+	var teleport_direction = "x"
 	if Input.is_action_pressed("ability") and ability_charged:
-		activate_ability()
+		if element == "teleport":
+			if !animated_sprite.flip_h or Input.is_action_pressed("move_right"):
+				teleport_arrow_right.visible = true
+				teleport_arrow_up.visible = false
+				teleport_arrow_down.visible = false
+				teleport_arrow_left.visible = false
+			if animated_sprite.flip_h or Input.is_action_pressed("move_left"):
+				teleport_arrow_left.visible = true
+				teleport_arrow_up.visible = false
+				teleport_arrow_down.visible = false
+				teleport_arrow_right.visible = false
+			if Input.is_action_pressed("move_up"):
+				teleport_direction = "up"
+				teleport_arrow_up.visible = true
+				teleport_arrow_right.visible = false
+				teleport_arrow_down.visible = false
+				teleport_arrow_left.visible = false
+			if Input.is_action_pressed("move_down"):
+				teleport_direction = "down"
+				teleport_arrow_down.visible = true
+				teleport_arrow_up.visible = false
+				teleport_arrow_right.visible = false
+				teleport_arrow_left.visible = false
+		else:
+			activate_ability(teleport_direction)
+		
+	if Input.is_action_just_released("ability") and element == "teleport":
+		teleport_arrow_up.visible = false
+		teleport_arrow_down.visible = false
+		teleport_arrow_left.visible = false
+		teleport_arrow_right.visible = false
+		activate_ability(teleport_direction)
 
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -100,13 +137,13 @@ func die():
 	death_timer.start()
 
 
-func activate_ability():
+func activate_ability(port_dir):
 	if element == "ice":
 		fire_projectile()
 	elif element == "fire":
 		dash()
 	elif element == "teleport":
-		teleport()
+		teleport(port_dir)
 	$AbilityTimer.start()
 	ability_charged = false
 
@@ -118,13 +155,18 @@ func dash():
 	in_animation = true
 
 
-func teleport():
+func teleport(port_dir):
 	animated_sprite.play("teleport")
 	in_animation = true
-	if animated_sprite.flip_h:
-		position.x -= 100
-	else:
-		position.x += 100
+	if port_dir == "x":
+		if animated_sprite.flip_h:
+			position.x -= 100
+		else:
+			position.x += 100
+	elif port_dir == "up":
+		position.y -= 100
+	elif port_dir == "down":
+		position.y += 100
 
 
 func fire_projectile():
