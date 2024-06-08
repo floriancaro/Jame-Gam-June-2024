@@ -399,7 +399,6 @@ stream = ExtResource("6_22324")
 bus = &"SFX"
 
 [node name="AbilityTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="AudioDeath" type="AudioStreamPlayer2D" parent="."]
