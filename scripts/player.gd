@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var audio_ice = $AudioIce
 @onready var audio_death = $AudioDeath
 @onready var collision_shape = $CollisionShape2D
+@onready var ability_timer = $AbilityTimer
 @onready var death_timer = $DeathTimer
 @onready var jump_timer = $JumpTimer
 @onready var teleport_arrow_up = $TeleportArrowUp
@@ -76,13 +77,14 @@ func _physics_process(delta):
 				teleport_arrow_left.visible = false
 		else:
 			activate_ability(teleport_direction)
-		
-	if Input.is_action_just_released("ability") and element == "teleport":
-		teleport_arrow_up.visible = false
-		teleport_arrow_down.visible = false
-		teleport_arrow_left.visible = false
-		teleport_arrow_right.visible = false
-		activate_ability(teleport_direction)
+	
+	if element == "teleport" and ability_charged:
+		if Input.is_action_just_released("ability"):
+			teleport_arrow_up.visible = false
+			teleport_arrow_down.visible = false
+			teleport_arrow_left.visible = false
+			teleport_arrow_right.visible = false
+			activate_ability(teleport_direction)
 
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -188,14 +190,17 @@ func card_pickup(ele):
 		audio_fire.play()
 		animated_sprite.play("henshi_fire")
 		animated_sprite.material.set_shader_parameter("fire", true)
+		ability_timer.wait_time = 1.5
 	elif element == "ice":
 		audio_ice.play()
 		animated_sprite.play("henshi_ice")
 		animated_sprite.material.set_shader_parameter("ice", true)
+		ability_timer.wait_time = 0.5
 	elif element == "teleport":
 		audio_ice.play()
 		animated_sprite.play("henshi_teleport")
 		animated_sprite.material.set_shader_parameter("teleport", true)
+		ability_timer.wait_time = 2.0
 	in_animation = true
 
 
