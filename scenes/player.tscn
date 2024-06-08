@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dn6mrl5ji1cpu"]
+[gd_scene load_steps=58 format=3 uid="uid://dn6mrl5ji1cpu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vfal1"]
 [ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="2_jywi2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cj6pxqhtmtr7u" path="res://assets/sprites/bob_teleport_henshi.png" id="5_pytg3"]
 [ext_resource type="AudioStream" uid="uid://bfpisan5l34vw" path="res://assets/audio/sfx/ice_transform.mp3" id="6_22324"]
 [ext_resource type="Texture2D" uid="uid://flt3vj4o5vct" path="res://assets/sprites/bob_sheet.png" id="8_jnu2g"]
+[ext_resource type="Texture2D" uid="uid://cug2w14a5djer" path="res://assets/sprites/bob_teleport.png" id="11_denu4"]
 [ext_resource type="AudioStream" uid="uid://bdd6xc3gtqgsy" path="res://assets/audio/sfx/sound_3.wav" id="14_18t4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca4kd"]
@@ -166,6 +167,22 @@ region = Rect2(0, 0, 34, 39)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wiyk"]
 atlas = ExtResource("4_obk5i")
 region = Rect2(34, 0, 34, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sxsr"]
+atlas = ExtResource("11_denu4")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dknnx"]
+atlas = ExtResource("11_denu4")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsbx5"]
+atlas = ExtResource("11_denu4")
+region = Rect2(40, 80, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r8hk"]
+atlas = ExtResource("11_denu4")
+region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_if27w"]
 animations = [{
@@ -329,6 +346,23 @@ animations = [{
 "loop": true,
 "name": &"old_move",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sxsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dknnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsbx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r8hk")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -349,7 +383,7 @@ material = SubResource("ShaderMaterial_crcx3")
 position = Vector2(0, -13)
 scale = Vector2(0.8, 0.75)
 sprite_frames = SubResource("SpriteFrames_if27w")
-animation = &"jump_up"
+animation = &"teleport"
 speed_scale = 1.1
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]

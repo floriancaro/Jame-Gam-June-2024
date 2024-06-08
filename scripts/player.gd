@@ -26,8 +26,10 @@ var extend_jump = false
 
 
 func _ready():
+	var element = "nature"
 	animated_sprite.material.set_shader_parameter("fire", false)
 	animated_sprite.material.set_shader_parameter("ice", false)
+	animated_sprite.material.set_shader_parameter("teleport", false)
 
 
 func _physics_process(delta):
@@ -117,7 +119,7 @@ func dash():
 
 
 func teleport():
-	# animated_sprite.play("teleport")
+	animated_sprite.play("teleport")
 	in_animation = true
 	if animated_sprite.flip_h:
 		position.x -= 100
