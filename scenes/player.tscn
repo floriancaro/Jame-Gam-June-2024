@@ -40,9 +40,9 @@ region = Rect2(80, 80, 45, 40)
 atlas = ExtResource("4_62hlp")
 region = Rect2(132, 80, 68, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sksbx"]
-atlas = ExtResource("3_ivbr4")
-region = Rect2(0, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pavk"]
+atlas = ExtResource("3_y25nj")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xoos"]
 atlas = ExtResource("3_ivbr4")
@@ -181,7 +181,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sksbx")
+"texture": SubResource("AtlasTexture_1pavk")
 }, {
 "duration": 1.2,
 "texture": SubResource("AtlasTexture_0xoos")
@@ -325,7 +325,7 @@ shape = SubResource("CircleShape2D_iv7u8")
 material = SubResource("ShaderMaterial_crcx3")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_if27w")
-animation = &"henshi_teleport"
+animation = &"henshi_fire"
 speed_scale = 1.1
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]

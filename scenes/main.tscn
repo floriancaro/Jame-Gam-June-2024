@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjl5818jxnb4o"]
+[gd_scene load_steps=27 format=3 uid="uid://bjl5818jxnb4o"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2ml6p"]
 [ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sprites/tile_sheet_1.png" id="1_sh0yu"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://wotpla124xs" path="res://scenes/enemies/boss.tscn" id="10_w4yr1"]
 [ext_resource type="PackedScene" uid="uid://ca6hawmkmwedf" path="res://scenes/she_bob.tscn" id="11_t71a6"]
 [ext_resource type="FontFile" uid="uid://bujltk7dyjc1a" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="12_eaoke"]
+[ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="13_y2lbj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
@@ -328,7 +329,7 @@ script = ExtResource("1_2ml6p")
 
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
-position = Vector2(-65, -72)
+position = Vector2(966, -72)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(118.571, 17.1429)
@@ -432,4 +433,12 @@ offset_top = -197.0
 offset_right = 1662.0
 offset_bottom = -174.0
 theme_override_fonts/font = ExtResource("12_eaoke")
-text = "You Rescued She Bob!"
+text = "You Rescued She-Bob!"
+
+[node name="HelpLabel" type="Label" parent="GameManager/Text"]
+offset_left = 1370.0
+offset_top = -178.0
+offset_right = 1532.0
+offset_bottom = -155.0
+theme_override_fonts/font = ExtResource("13_y2lbj")
+text = "Help me, Bob!"
