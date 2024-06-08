@@ -1,11 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://dn6mrl5ji1cpu"]
+[gd_scene load_steps=50 format=3 uid="uid://dn6mrl5ji1cpu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_vfal1"]
 [ext_resource type="Shader" path="res://shaders/element_shader.gdshader" id="2_jywi2"]
 [ext_resource type="PackedScene" uid="uid://c07t5ec7o2cew" path="res://scenes/projectile.tscn" id="2_rf32c"]
-[ext_resource type="Texture2D" uid="uid://crdhqr3aurjo6" path="res://assets/sprites/bob_idle.png" id="2_sckyg"]
 [ext_resource type="Texture2D" uid="uid://dyfbqvlyp7icu" path="res://assets/sprites/bob_fire_henshi.png" id="3_ivbr4"]
-[ext_resource type="Texture2D" uid="uid://2padgdgm4c5a" path="res://assets/sprites/bob_jump.png" id="3_ra2yb"]
 [ext_resource type="Texture2D" uid="uid://hbbrw8r8h4x8" path="res://assets/sprites/bob_ice_fire_henshi.png" id="3_y25nj"]
 [ext_resource type="Texture2D" uid="uid://df14enb3vondb" path="res://assets/sprites/bob_fire.png" id="4_62hlp"]
 [ext_resource type="Texture2D" uid="uid://0dbdv60jvlba" path="res://assets/sprites/bob_running.png" id="4_obk5i"]
@@ -100,41 +98,41 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("5_pytg3")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nq4uy"]
-atlas = ExtResource("2_sckyg")
-region = Rect2(0, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuy4s"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(0, 40, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mx4p"]
-atlas = ExtResource("2_sckyg")
-region = Rect2(34, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_73765"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(32, 40, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbjam"]
-atlas = ExtResource("2_sckyg")
-region = Rect2(68, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj2ex"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(64, 40, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukqw4"]
-atlas = ExtResource("2_sckyg")
-region = Rect2(102, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq5rq"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(96, 40, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kviie"]
-atlas = ExtResource("2_sckyg")
-region = Rect2(136, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bxdn"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(0, 80, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6con"]
-atlas = ExtResource("3_ra2yb")
-region = Rect2(0, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_og7sr"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(32, 80, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24mxi"]
-atlas = ExtResource("3_ra2yb")
-region = Rect2(34, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wddjf"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(64, 80, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pyl03"]
-atlas = ExtResource("3_ra2yb")
-region = Rect2(68, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sruks"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(96, 80, 32, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sc5k2"]
-atlas = ExtResource("3_ra2yb")
-region = Rect2(102, 0, 34, 39)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyohi"]
+atlas = ExtResource("5_dx8qy")
+region = Rect2(32, 80, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i40ty"]
 atlas = ExtResource("5_dx8qy")
@@ -241,40 +239,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nq4uy")
+"texture": SubResource("AtlasTexture_uuy4s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0mx4p")
+"texture": SubResource("AtlasTexture_73765")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rbjam")
+"texture": SubResource("AtlasTexture_bj2ex")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ukqw4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kviie")
+"texture": SubResource("AtlasTexture_mq5rq")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_a6con")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bxdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og7sr")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_wddjf")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_24mxi")
+"texture": SubResource("AtlasTexture_sruks")
 }, {
-"duration": 0.75,
-"texture": SubResource("AtlasTexture_pyl03")
-}, {
-"duration": 1.75,
-"texture": SubResource("AtlasTexture_sc5k2")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyohi")
 }],
 "loop": false,
 "name": &"jump",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -325,7 +323,9 @@ shape = SubResource("CircleShape2D_iv7u8")
 material = SubResource("ShaderMaterial_crcx3")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_if27w")
-animation = &"henshi_teleport"
+animation = &"jump"
+frame = 4
+frame_progress = 1.0
 speed_scale = 1.1
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]
