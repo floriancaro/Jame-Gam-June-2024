@@ -328,7 +328,7 @@ script = ExtResource("1_2ml6p")
 
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
-position = Vector2(-65, -72)
+position = Vector2(-157, -86)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(118.571, 17.1429)
@@ -348,7 +348,7 @@ position = Vector2(167, -16)
 position = Vector2(444, -11)
 
 [node name="Boss" parent="Enemies" instance=ExtResource("10_w4yr1")]
-position = Vector2(1456, -40)
+position = Vector2(1356, -46)
 
 [node name="World" type="Node" parent="."]
 

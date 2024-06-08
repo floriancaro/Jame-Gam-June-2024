@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2qdqk3805ite" path="res://assets/sprites/boss.png" id="3_jqubn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmcsc"]
-size = Vector2(47, 62)
+size = Vector2(218, 189)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ek7cu"]
 atlas = ExtResource("3_jqubn")
@@ -106,15 +106,16 @@ script = ExtResource("1_30llo")
 projectile_scene = ExtResource("2_lllb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.5, 0)
+position = Vector2(23, -79.5)
 shape = SubResource("RectangleShape2D_kmcsc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
+position = Vector2(-18, -60)
+scale = Vector2(7.05859, 5.25781)
 sprite_frames = SubResource("SpriteFrames_bjsfl")
-animation = &"boss death"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.840396
+frame_progress = 0.784943
 
 [node name="ProjectileTimer" type="Timer" parent="."]
 wait_time = 3.0

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci8pajxxoak7x"]
+
+[ext_resource type="Texture2D" uid="uid://cmekri3fjvca6" path="res://assets/sprites/MEGACARD.png" id="1_vodpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knp4a"]
+atlas = ExtResource("1_vodpl")
+region = Rect2(0, 0, 116, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plwie"]
+atlas = ExtResource("1_vodpl")
+region = Rect2(116, 0, 116, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucvny"]
+atlas = ExtResource("1_vodpl")
+region = Rect2(232, 0, 116, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk7hr"]
+atlas = ExtResource("1_vodpl")
+region = Rect2(348, 0, 116, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wjsls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knp4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plwie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucvny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk7hr")
+}],
+"loop": true,
+"name": &"Mega card",
+"speed": 5.0
+}]
+
+[node name="Megacard" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(30.438, 133.5)
+scale = Vector2(1.534, 1.534)
+sprite_frames = SubResource("SpriteFrames_wjsls")
+animation = &"Mega card"
+frame_progress = 0.254131
