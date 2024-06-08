@@ -86,13 +86,15 @@ func _physics_process(delta):
 
 
 func hit():
-	Engine.time_scale = 0.5
-	audio_death.play()
-	collision_shape.queue_free()
-	die()
+	health -= 1
+	if health == 0:
+		die()
 
 
 func die():
+	Engine.time_scale = 0.5
+	audio_death.play()
+	collision_shape.queue_free()
 	death_timer.start()
 
 

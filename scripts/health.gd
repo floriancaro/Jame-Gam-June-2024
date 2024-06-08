@@ -20,12 +20,22 @@ func _ready():
 func _process(delta):
 	if player.health >= 1:
 		sprite_hp1.visible = true
+	else:
+		sprite_hp1.visible = false
 	if player.health >= 2:
 		sprite_hp2.visible = true
+	else:
+		sprite_hp2.visible = false
 	if player.health >= 3:
 		sprite_hp3.visible = true
+	else:
+		sprite_hp3.visible = false
 	if player.health >= 4:
 		sprite_hp4.visible = true
+	else:
+		sprite_hp4.visible = false
 	if player.health >= 5:
 		sprite_hp5.visible = true
+	else:
+		sprite_hp5.visible = false
 		
