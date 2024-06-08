@@ -24,9 +24,8 @@ func hit():
 
 func _on_body_entered(body):
 	kill_timer.start()
-	Engine.time_scale = 0.5
-	body.get_node("AudioDeath").play()
-	body.get_node("CollisionShape2D").queue_free()
+	if body.has_method("hit"):
+		body.hit()
 
 
 func _on_movement_timer_timeout():
@@ -34,5 +33,5 @@ func _on_movement_timer_timeout():
 	animated_sprite.flip_h = not animated_sprite.flip_h
 
 
-func _on_kill_timer_timeout():
-	get_tree().reload_current_scene()
+#func _on_kill_timer_timeout():
+	#get_tree().reload_current_scene()

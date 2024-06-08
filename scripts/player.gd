@@ -10,7 +10,9 @@ extends CharacterBody2D
 @onready var projectile_marker = $ProjectileMarker
 @onready var audio_fire = $AudioFire
 @onready var audio_ice = $AudioIce
+@onready var audio_death = $AudioDeath
 @onready var collision_shape = $CollisionShape2D
+@onready var death_timer = $DeathTimer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -69,6 +71,17 @@ func _physics_process(delta):
 			velocity.x = 1 * SPEED_DASH
 	
 	move_and_slide()
+
+
+func hit():
+	Engine.time_scale = 0.5
+	audio_death.play()
+	collision_shape.queue_free()
+	die()
+
+
+func die():
+	death_timer.start()
 
 
 func activate_ability():
@@ -135,3 +148,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_ability_timer_timeout():
 	ability_charged = true
+
+
+func _on_death_timer_timeout():
+	get_tree().reload_current_scene()

@@ -312,6 +312,7 @@ animations = [{
 z_index = 5
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
+collision_mask = 9
 script = ExtResource("1_vfal1")
 projectile_scene = ExtResource("2_rf32c")
 metadata/_edit_group_ = true
@@ -346,5 +347,10 @@ one_shot = true
 stream = ExtResource("14_18t4n")
 bus = &"SFX"
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AbilityTimer" to="." method="_on_ability_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

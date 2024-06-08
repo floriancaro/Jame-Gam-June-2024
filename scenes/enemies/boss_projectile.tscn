@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://cc1gsdab21e7a"]
+
+[ext_resource type="Script" path="res://scripts/boss_projectile.gd" id="1_ok1n4"]
+[ext_resource type="Texture2D" uid="uid://cdth34cyy0j0d" path="res://assets/sprites/boss_attack.png" id="1_vojrf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48mtw"]
+atlas = ExtResource("1_vojrf")
+region = Rect2(0, 280, 125, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t24r3"]
+atlas = ExtResource("1_vojrf")
+region = Rect2(0, 390, 125, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0d5c"]
+atlas = ExtResource("1_vojrf")
+region = Rect2(0, 445, 125, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_240pm"]
+atlas = ExtResource("1_vojrf")
+region = Rect2(0, 440, 125, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4n2p"]
+atlas = ExtResource("1_vojrf")
+region = Rect2(125, 285, 125, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yj8tl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48mtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t24r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0d5c")
+}],
+"loop": true,
+"name": &"projectile1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_240pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4n2p")
+}],
+"loop": true,
+"name": &"projectile2",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5l56"]
+radius = 13.0
+height = 64.0
+
+[node name="BossProjectile" type="Area2D"]
+z_index = 2
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_ok1n4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yj8tl")
+animation = &"projectile1"
+frame = 1
+frame_progress = 0.395766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_f5l56")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -6,6 +6,12 @@ extends Area2D
 @onready var collision_simple = $CollisionShapeSimple
 @onready var collision_spin = $CollisionShapeSpin
 @onready var kill_timer = $KillTimer
+@onready var raycast = $RayCast2D
+
+@export var SPEED = 100
+@export var direction = -1
+
+@onready var player = %Player
 
 var rng = RandomNumberGenerator.new()
 var health = 5
@@ -19,14 +25,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if player.position.x - self.position.x < 0:
+		direction = -1
+	else:
+		direction = +1
+	if direction < 0:
+		raycast.target_position.x= -75
+	else:
+		raycast.target_position.x = 75
+	# only move if there is ground ahead
+	if raycast.is_colliding():
+		position.x += delta * SPEED * direction
 
 
 func _on_body_entered(body):
 	kill_timer.start()
-	Engine.time_scale = 0.5
-	body.get_node("AudioDeath").play()
-	body.get_node("CollisionShape2D").queue_free()
+	if body.has_method("hit"):
+		body.hit()
 
 
 func hit():
@@ -35,8 +50,13 @@ func hit():
 		animated_sprite.play("die")
 
 
-func _on_kill_timer_timeout():
-	get_tree().reload_current_scene()
+#func _on_movement_timer_timeout():
+	#direction *= -1
+	#animated_sprite.flip_h = not animated_sprite.flip_h
+
+
+#func _on_kill_timer_timeout():
+	#get_tree().reload_current_scene()
 
 
 func _on_attack_timer_timeout():
