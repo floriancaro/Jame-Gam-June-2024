@@ -1,11 +1,32 @@
-[gd_scene load_steps=12 format=3 uid="uid://wotpla124xs"]
+[gd_scene load_steps=18 format=3 uid="uid://wotpla124xs"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_30llo"]
 [ext_resource type="Texture2D" uid="uid://ccira6frmsuuw" path="res://assets/sprites/boss_1.png" id="1_x6b64"]
 [ext_resource type="PackedScene" uid="uid://cc1gsdab21e7a" path="res://scenes/enemies/boss_projectile.tscn" id="2_lllb3"]
+[ext_resource type="Texture2D" uid="uid://d2qdqk3805ite" path="res://assets/sprites/boss.png" id="3_jqubn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmcsc"]
 size = Vector2(47, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek7cu"]
+atlas = ExtResource("3_jqubn")
+region = Rect2(0, 278, 125, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muilk"]
+atlas = ExtResource("3_jqubn")
+region = Rect2(125, 278, 125, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f000"]
+atlas = ExtResource("3_jqubn")
+region = Rect2(250, 278, 125, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2da3"]
+atlas = ExtResource("3_jqubn")
+region = Rect2(375, 278, 125, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_400tr"]
+atlas = ExtResource("3_jqubn")
+region = Rect2(0, 415, 125, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o427l"]
 atlas = ExtResource("1_x6b64")
@@ -33,6 +54,26 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bjsfl"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek7cu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muilk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f000")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2da3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_400tr")
+}],
+"loop": true,
+"name": &"boss death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o427l")
@@ -71,8 +112,9 @@ shape = SubResource("RectangleShape2D_kmcsc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bjsfl")
-animation = &"idle"
+animation = &"boss death"
 autoplay = "idle"
+frame_progress = 0.840396
 
 [node name="ProjectileTimer" type="Timer" parent="."]
 wait_time = 3.0
