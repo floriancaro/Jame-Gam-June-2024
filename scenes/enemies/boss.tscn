@@ -70,8 +70,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_400tr")
 }],
-"loop": true,
-"name": &"boss death",
+"loop": false,
+"name": &"boss_death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_kmcsc")
 position = Vector2(-18, -60)
 scale = Vector2(7.05859, 5.25781)
 sprite_frames = SubResource("SpriteFrames_bjsfl")
-animation = &"idle"
+animation = &"boss_death"
 autoplay = "idle"
 
 [node name="ProjectileTimer" type="Timer" parent="."]
@@ -127,5 +127,6 @@ position = Vector2(-31, 22)
 wait_time = 0.5
 one_shot = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

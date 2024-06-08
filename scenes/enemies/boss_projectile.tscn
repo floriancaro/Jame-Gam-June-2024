@@ -68,7 +68,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5l56"]
 radius = 13.0
-height = 64.0
+height = 60.0
 
 [node name="BossProjectile" type="Area2D"]
 z_index = 2
@@ -78,11 +78,11 @@ script = ExtResource("1_ok1n4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yj8tl")
-animation = &"projectile1"
-frame_progress = 0.00614029
+animation = &"projectile2"
+frame_progress = 0.589863
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, -10)
+position = Vector2(-2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f5l56")
 

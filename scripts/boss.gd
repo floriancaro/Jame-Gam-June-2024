@@ -3,6 +3,7 @@ extends Area2D
 @export var projectile_scene: PackedScene
 @export var health = 5
 
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var projectile_marker = $ProjectileMarker
 @onready var kill_timer = $KillTimer
 
@@ -22,7 +23,7 @@ func fire_projectile():
 func hit():
 	health -= 1
 	if health == 0:
-		queue_free()
+		animated_sprite.play("boss_death")
 
 
 func _on_projectile_timer_timeout():
@@ -31,3 +32,8 @@ func _on_projectile_timer_timeout():
 
 func _on_kill_timer_timeout():
 	get_tree().reload_current_scene()
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if health == 0:
+		queue_free()
