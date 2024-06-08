@@ -32,9 +32,10 @@ animations = [{
 }]
 
 [node name="8 bit hero" type="Node2D"]
+z_index = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-15, -4)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_mkhst")
 animation = &"idle"
 autoplay = "idle"

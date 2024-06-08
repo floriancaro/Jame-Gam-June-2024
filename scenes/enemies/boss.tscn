@@ -121,7 +121,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]
-position = Vector2(-31, 22)
+position = Vector2(-17.6667, 9)
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 0.5
