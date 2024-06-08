@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcivh3l84dfu6"]
+
+[ext_resource type="Texture2D" uid="uid://clgov3bwpvcra" path="res://scripts/8 bits place.png" id="1_hyfam"]
+
+[node name="8 bit place" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, -34)
+scale = Vector2(0.214844, 0.182292)
+texture = ExtResource("1_hyfam")
