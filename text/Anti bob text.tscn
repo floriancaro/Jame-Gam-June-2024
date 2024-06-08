@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bfqrtet8n77sj"]
+
+[node name="Anti bob text" type="Node"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = -60.0
+offset_top = -104.0
+offset_right = 176.0
+offset_bottom = -14.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "The only thing anti-bob ever wanted was to be like bob, a hero"
+tab_size = 3
+custom_effects = [null]
+visible_characters_behavior = 3
