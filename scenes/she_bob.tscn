@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca6hawmkmwedf"]
+[gd_scene load_steps=9 format=3 uid="uid://ca6hawmkmwedf"]
 
 [ext_resource type="Texture2D" uid="uid://bt0ge7g8rgveh" path="res://assets/sprites/smile girl bob.png" id="1_kijio"]
+[ext_resource type="Script" path="res://scripts/she_bob.gd" id="1_xorg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_178km"]
 radius = 13.0384
@@ -47,14 +48,17 @@ animations = [{
 }]
 
 [node name="SheBob" type="Area2D"]
-z_index = 6
+z_index = 5
 scale = Vector2(0.6, 0.6)
-collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_xorg8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_178km")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2l7s1")
-animation = &"idle"
-autoplay = "idle"
+animation = &"worried"
+autoplay = "worried"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

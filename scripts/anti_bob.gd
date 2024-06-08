@@ -27,8 +27,10 @@ func _ready():
 func _process(delta):
 	if player.position.x - self.position.x < 0:
 		direction = -1
+		animated_sprite.flip_h = false
 	else:
-		direction = +1
+		direction = 1
+		animated_sprite.flip_h = true
 	if direction < 0:
 		raycast.target_position.x= -75
 	else:
