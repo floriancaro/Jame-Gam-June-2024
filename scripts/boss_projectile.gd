@@ -16,3 +16,8 @@ func _on_body_entered(body):
 	if body.has_method("hit"):
 		body.hit()
 		queue_free()
+
+
+# remove projectile after some time
+func _on_timer_timeout():
+	queue_free()
