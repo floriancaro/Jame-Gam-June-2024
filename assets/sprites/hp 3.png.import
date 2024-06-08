@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://col31use71tun"
-path="res://.godot/imported/hp 1.png-70a3ddc8b1c6cdc979302ae978e9c5cf.ctex"
+uid="uid://dm7ahudiqhoyy"
+path="res://.godot/imported/hp 3.png-906e7b17070d22d50ca6e0e0566d71a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/HP/hp 1.png"
-dest_files=["res://.godot/imported/hp 1.png-70a3ddc8b1c6cdc979302ae978e9c5cf.ctex"]
+source_file="res://assets/sprites/hp 3.png"
+dest_files=["res://.godot/imported/hp 3.png-906e7b17070d22d50ca6e0e0566d71a7.ctex"]
 
 [params]
 

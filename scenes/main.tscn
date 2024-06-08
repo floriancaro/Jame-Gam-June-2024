@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjl5818jxnb4o"]
+[gd_scene load_steps=30 format=3 uid="uid://bjl5818jxnb4o"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2ml6p"]
 [ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sprites/tile_sheet_1.png" id="1_sh0yu"]
 [ext_resource type="PackedScene" uid="uid://dn6mrl5ji1cpu" path="res://scenes/player.tscn" id="2_2ciu8"]
 [ext_resource type="PackedScene" uid="uid://bxeg30g2biypr" path="res://scenes/levels/level_x.tscn" id="3_0f7wx"]
 [ext_resource type="PackedScene" uid="uid://1notlkfqt7bg" path="res://scenes/level_elements/platform.tscn" id="3_28ixg"]
+[ext_resource type="PackedScene" uid="uid://bpf2htewaindp" path="res://scenes/HP/health.tscn" id="3_tnnck"]
 [ext_resource type="PackedScene" uid="uid://oxvhlxt5dqof" path="res://scenes/enemies/anti_bob.tscn" id="4_akw7c"]
 [ext_resource type="PackedScene" uid="uid://bwiiinpodq7d7" path="res://scenes/killzone.tscn" id="5_cji1o"]
 [ext_resource type="PackedScene" uid="uid://ljsurexgmi2y" path="res://scenes/level_elements/card.tscn" id="6_6mpsv"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ca6hawmkmwedf" path="res://scenes/she_bob.tscn" id="11_t71a6"]
 [ext_resource type="FontFile" uid="uid://bujltk7dyjc1a" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="12_eaoke"]
 [ext_resource type="PackedScene" uid="uid://dkdbpk2cdn3vr" path="res://scenes/8 bit/8_bit_hero.tscn" id="13_julrh"]
+[ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="14_epuum"]
 [ext_resource type="PackedScene" uid="uid://dcivh3l84dfu6" path="res://scenes/8 bit/8_bit_place.tscn" id="14_xxtbg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
@@ -340,6 +342,18 @@ scale = Vector2(1.42857, 1.42857)
 zoom = Vector2(3.5, 3.5)
 limit_bottom = 200
 
+[node name="HealthBar" parent="Player/Camera2D" instance=ExtResource("3_tnnck")]
+position = Vector2(199.334, -180)
+scale = Vector2(0.700001, 0.700001)
+
+[node name="HealthLabel" type="Label" parent="Player/Camera2D"]
+offset_left = 136.334
+offset_top = -185.834
+offset_right = 176.334
+offset_bottom = -162.834
+theme_override_fonts/font = ExtResource("12_eaoke")
+text = "HP"
+
 [node name="SheBob" parent="." instance=ExtResource("11_t71a6")]
 position = Vector2(1502, -141)
 
@@ -437,6 +451,14 @@ offset_right = 1662.0
 offset_bottom = -174.0
 theme_override_fonts/font = ExtResource("12_eaoke")
 text = "You Rescued She Bob!"
+
+[node name="HelpLabel" type="Label" parent="GameManager/Text"]
+offset_left = 1361.0
+offset_top = -175.0
+offset_right = 1523.0
+offset_bottom = -152.0
+theme_override_fonts/font = ExtResource("14_epuum")
+text = "Help me, Bob!"
 
 [node name="8 bit place" parent="." instance=ExtResource("14_xxtbg")]
 position = Vector2(36, -24)
