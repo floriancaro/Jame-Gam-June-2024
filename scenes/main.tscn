@@ -417,7 +417,7 @@ position = Vector2(1201, -129)
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(326, -53)
+position = Vector2(-753, -121)
 SPEED = 200.0
 SPEED_DASH = 300.0
 TELEPORT_DIST = 80.0

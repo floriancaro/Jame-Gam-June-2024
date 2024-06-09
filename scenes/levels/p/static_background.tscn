@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://q2nr83kj5vma"]
+
+[ext_resource type="Texture2D" uid="uid://dl6dxn6nts5ky" path="res://assets/sprites/tile back/back 2.png" id="1_st21a"]
+[ext_resource type="Texture2D" uid="uid://cld1o02nwxdkk" path="res://assets/sprites/tile back/back 1.png" id="2_vtspd"]
+[ext_resource type="Texture2D" uid="uid://h4raw7o8o8t" path="res://assets/sprites/tile back/1back.png" id="3_ddsw5"]
+[ext_resource type="Texture2D" uid="uid://6ok6lvq23hsw" path="res://assets/sprites/tile back/back 3.png" id="4_8i22l"]
+
+[node name="Static background" type="Sprite2D"]
+z_index = -1
+position = Vector2(223.75, -35.25)
+scale = Vector2(3.64793, 3.13636)
+texture = ExtResource("1_st21a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-7.0588, -9.48551)
+texture = ExtResource("2_vtspd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+position = Vector2(5.48256, -9.53623)
+scale = Vector2(1, 2.11413)
+texture = ExtResource("3_ddsw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(13.4323, -9.06255)
+scale = Vector2(0.86836, 0.447215)
+texture = ExtResource("4_8i22l")
