@@ -20,5 +20,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	rescued = true
-	game_manager.get_node("Text/HelpLabel").hide()
-	game_manager.get_node("Text/RescueLabel").show()
+	$Node2D/HelpLabel.hide()
+	$Node2D/RescueLabel.show()

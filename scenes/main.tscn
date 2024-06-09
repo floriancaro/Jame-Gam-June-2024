@@ -452,7 +452,7 @@ rotation = 3.14159
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-1269, -110)
+position = Vector2(1649, -110)
 SPEED = 200.0
 TELEPORT_DIST = 80.0
 
