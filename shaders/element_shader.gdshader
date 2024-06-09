@@ -1,10 +1,13 @@
 shader_type canvas_item;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
+uniform float white_progress : hint_range(0,1) = 0;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta){
+	return start + (end - start) * delta;
 }
 
-uniform bool fire = false; // you can assign a default value to uniforms
+uniform bool damaged = false;
+uniform bool fire = false;
 uniform bool ice = false;
 uniform bool teleport = false;
 
@@ -21,6 +24,12 @@ void fragment(){
 	COLOR.b = 1.0;
   } else {
     COLOR = texture(TEXTURE, UV); // Read from texture
+  }
+
+  if(damaged == true) {
+	vec4 origin = texture(TEXTURE, UV);
+	COLOR.rgb = interpolate_vec3(origin.rgb, vec3(1,1,1), white_progress);
+	COLOR.a = origin.a;
   }
 }
 

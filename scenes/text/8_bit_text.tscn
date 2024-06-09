@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://o22cjxc60mk1"]
+
+[ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="1_cchid"]
+
+[node name="8BitText" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_top = -59.0
+offset_right = 185.0
+offset_bottom = -1.0
+theme_override_fonts/font = ExtResource("1_cchid")
+text = "Now you are a hero 
+like me."

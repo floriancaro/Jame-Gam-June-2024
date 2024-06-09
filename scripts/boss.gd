@@ -15,7 +15,8 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	kill_timer.start()
+	if body.element == "fire" and body.is_dashing:
+		hit()
 	if body.has_method("hit"):
 		body.hit()
 
@@ -24,6 +25,7 @@ func fire_projectile():
 	var projectile = projectile_scene.instantiate()
 	projectile.position = projectile_marker.global_position
 	get_tree().get_root().add_child(projectile)
+	$BossBreathAudio.play()
 
 
 func kill():

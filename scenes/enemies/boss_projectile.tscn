@@ -88,4 +88,9 @@ position = Vector2(14, -10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_f5l56")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

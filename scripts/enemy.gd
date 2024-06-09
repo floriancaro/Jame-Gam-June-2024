@@ -23,7 +23,8 @@ func hit():
 
 
 func _on_body_entered(body):
-	kill_timer.start()
+	if body.element == "fire" and body.is_dashing:
+		hit()		
 	if body.has_method("hit"):
 		body.hit()
 

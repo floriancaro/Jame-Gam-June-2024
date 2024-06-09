@@ -7,18 +7,19 @@ extends CharacterBody2D
 @export var TELEPORT_DIST = 100.0
 @export var projectile_scene: PackedScene
 @export var health = 5
-@onready var audio_teleport = $Audioteleport
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var projectile_marker = $ProjectileMarker
-@onready var audio_jump = $Audiojump
+@onready var audio_jump = $AudioJump
 @onready var audio_fire = $AudioFire
 @onready var audio_ice = $AudioIce
 @onready var audio_death = $AudioDeath
+@onready var audio_teleport = $AudioTeleport
 @onready var collision_shape = $CollisionShape2D
 @onready var ability_timer = $AbilityTimer
 @onready var death_timer = $DeathTimer
 @onready var jump_timer = $JumpTimer
+@onready var invincible_timer = $InvincibleTimer
 @onready var teleport_arrow_up = $TeleportArrowUp
 @onready var teleport_arrow_down = $TeleportArrowDown
 @onready var teleport_arrow_left = $TeleportArrowLeft
@@ -32,6 +33,7 @@ var in_animation = false
 var	ability_charged = true
 var is_dashing = false
 var extend_jump = false
+var is_invincible = false
 var teleport_direction = "x"
 
 
@@ -42,7 +44,7 @@ func _ready():
 	animated_sprite.material.set_shader_parameter("teleport", false)
 
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -97,7 +99,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("jump"):
 		extend_jump = false
 	if extend_jump:
-		velocity.y -= 5
+		velocity.y -= 10
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
@@ -131,9 +133,14 @@ func _physics_process(delta):
 
 
 func hit():
-	health -= 1
-	if health == 0:
-		die()
+	if not is_invincible:
+		health -= 1
+		is_invincible = true
+		invincible_timer.start()
+		animated_sprite.material.set_shader_parameter("damaged", true)
+		$HitFlashTimer.start()
+		if health == 0:
+			die()
 
 
 func die():
@@ -155,7 +162,7 @@ func activate_ability(port_dir):
 
 
 func dash():
-	set_collision_layer_value(2, false)
+	is_invincible = true
 	animated_sprite.play("dash")
 	is_dashing = true
 	in_animation = true
@@ -197,23 +204,29 @@ func card_pickup(ele):
 		audio_fire.play()
 		animated_sprite.play("henshi_fire")
 		animated_sprite.material.set_shader_parameter("fire", true)
+		animated_sprite.material.set_shader_parameter("ice", false)
+		animated_sprite.material.set_shader_parameter("teleport", false)
 		ability_timer.wait_time = 1.5
 	elif element == "ice":
 		audio_ice.play()
 		animated_sprite.play("henshi_ice")
 		animated_sprite.material.set_shader_parameter("ice", true)
+		animated_sprite.material.set_shader_parameter("fire", false)
+		animated_sprite.material.set_shader_parameter("teleport", false)
 		ability_timer.wait_time = 0.5
 	elif element == "teleport":
 		audio_teleport.play()
 		animated_sprite.play("henshi_teleport")
 		animated_sprite.material.set_shader_parameter("teleport", true)
+		animated_sprite.material.set_shader_parameter("fire", false)
+		animated_sprite.material.set_shader_parameter("ice", false)
 		ability_timer.wait_time = 2.0
 
 
 func _on_animated_sprite_2d_animation_finished():
 	in_animation = false
 	is_dashing = false
-	set_collision_layer_value(2, true)
+	is_invincible = false
 
 
 func _on_ability_timer_timeout():
@@ -226,3 +239,17 @@ func _on_death_timer_timeout():
 
 func _on_jump_timer_timeout():
 	extend_jump = false
+
+
+func _on_invincible_timer_timeout():
+	is_invincible = false
+	animated_sprite.material.set_shader_parameter("damaged", false)
+	$HitFlashTimer.stop()
+
+
+func _on_hit_flash_timer_timeout():
+	var white_progress = animated_sprite.material.get_shader_parameter("white_progress")
+	if white_progress == 1:
+		animated_sprite.material.set_shader_parameter("white_progress", 0)
+	else:
+		animated_sprite.material.set_shader_parameter("white_progress", 1)

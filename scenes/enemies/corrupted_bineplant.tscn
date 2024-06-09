@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://k2tepw12pc7c"]
+[gd_scene load_steps=8 format=3 uid="uid://k2tepw12pc7c"]
 
 [ext_resource type="Texture2D" uid="uid://cg0kng3fql7j1" path="res://assets/sprites/corrupt bone plant.png" id="1_omy03"]
 
@@ -38,9 +38,17 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj02r"]
+size = Vector2(26, 36)
+
 [node name="Corrupted bineplant" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_13ose")
 autoplay = "default"
 frame_progress = 0.300928
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 2)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_oj02r")

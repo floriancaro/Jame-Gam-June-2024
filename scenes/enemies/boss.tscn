@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://wotpla124xs"]
+[gd_scene load_steps=19 format=3 uid="uid://wotpla124xs"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_30llo"]
 [ext_resource type="Texture2D" uid="uid://ccira6frmsuuw" path="res://assets/sprites/boss_1.png" id="1_x6b64"]
 [ext_resource type="PackedScene" uid="uid://cc1gsdab21e7a" path="res://scenes/enemies/boss_projectile.tscn" id="2_lllb3"]
 [ext_resource type="Texture2D" uid="uid://d2qdqk3805ite" path="res://assets/sprites/boss.png" id="3_jqubn"]
+[ext_resource type="AudioStream" uid="uid://cwp3cgoqrvkmn" path="res://assets/audio/sfx/explosion.wav" id="5_026x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmcsc"]
 size = Vector2(25, 30)
@@ -127,6 +128,12 @@ position = Vector2(-17.6667, 9)
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="BossBreathAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_026x8")
+max_distance = 550.0
+attenuation = 2.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]

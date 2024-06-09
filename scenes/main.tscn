@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjl5818jxnb4o"]
+[gd_scene load_steps=32 format=3 uid="uid://bjl5818jxnb4o"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2ml6p"]
 [ext_resource type="Texture2D" uid="uid://ce4548g0wgsgm" path="res://assets/sprites/tile_sheet_1.png" id="1_sh0yu"]
@@ -16,7 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dkdbpk2cdn3vr" path="res://scenes/8bit/8_bit_hero.tscn" id="13_julrh"]
 [ext_resource type="FontFile" uid="uid://ccns84fu50psr" path="res://assets/fonts/PixelOperator8.ttf" id="14_epuum"]
 [ext_resource type="PackedScene" uid="uid://dcivh3l84dfu6" path="res://scenes/8bit/8_bit_place.tscn" id="14_xxtbg"]
-[ext_resource type="PackedScene" path="res://scenes/MEGACAARD/mega_card.tscn" id="14_yleam"]
+[ext_resource type="PackedScene" uid="uid://dusberst8kbyg" path="res://scenes/MEGACAARD/mega_card.tscn" id="14_yleam"]
+[ext_resource type="PackedScene" uid="uid://b3d27ihio4dij" path="res://scenes/death_spike.tscn" id="18_utkyl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8mtu"]
 texture = ExtResource("1_sh0yu")
@@ -331,6 +332,28 @@ _data = {
 [node name="Main" type="Node"]
 script = ExtResource("1_2ml6p")
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Text" type="Node" parent="GameManager"]
+
+[node name="RescueLabel" type="Label" parent="GameManager/Text"]
+visible = false
+offset_left = 1370.0
+offset_top = -197.0
+offset_right = 1662.0
+offset_bottom = -174.0
+theme_override_fonts/font = ExtResource("12_eaoke")
+text = "You Rescued She Bob!"
+
+[node name="HelpLabel" type="Label" parent="GameManager/Text"]
+offset_left = 1361.0
+offset_top = -175.0
+offset_right = 1523.0
+offset_bottom = -152.0
+theme_override_fonts/font = ExtResource("14_epuum")
+text = "Help me, Bob!"
+
 [node name="World" type="Node" parent="."]
 
 [node name="LevelX" parent="World" instance=ExtResource("3_0f7wx")]
@@ -414,12 +437,35 @@ element = "teleport"
 [node name="MegaCard" parent="World/Cards" instance=ExtResource("14_yleam")]
 position = Vector2(1201, -129)
 
+[node name="DeathSpikes" type="Node" parent="World"]
+
+[node name="DeathSpike1" parent="World/DeathSpikes" instance=ExtResource("18_utkyl")]
+position = Vector2(-430, 7)
+
+[node name="DeathSpike2" parent="World/DeathSpikes" instance=ExtResource("18_utkyl")]
+position = Vector2(-409, 7)
+
+[node name="DeathSpike3" parent="World/DeathSpikes" instance=ExtResource("18_utkyl")]
+position = Vector2(-508, -81)
+rotation = 3.14159
+
+[node name="DeathSpike4" parent="World/DeathSpikes" instance=ExtResource("18_utkyl")]
+position = Vector2(-487, -81)
+rotation = 3.14159
+
+[node name="DeathSpike5" parent="World/DeathSpikes" instance=ExtResource("18_utkyl")]
+position = Vector2(-547, -81)
+rotation = 3.14159
+
+[node name="DeathSpike6" parent="World/DeathSpikes" instance=ExtResource("18_utkyl")]
+position = Vector2(-526, -81)
+rotation = 3.14159
+
 [node name="Player" parent="." instance=ExtResource("2_2ciu8")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-753, -121)
+position = Vector2(-127, -84)
 SPEED = 200.0
-SPEED_DASH = 300.0
 TELEPORT_DIST = 80.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -447,35 +493,13 @@ position = Vector2(1502, -141)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_nm2g3")]
-position = Vector2(167, -16)
-
-[node name="AntiBob" parent="Enemies" instance=ExtResource("4_akw7c")]
-position = Vector2(444, -11)
+position = Vector2(167, -15)
 
 [node name="Boss" parent="Enemies" instance=ExtResource("10_w4yr1")]
 position = Vector2(1448, -48)
 
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-
-[node name="Text" type="Node" parent="GameManager"]
-
-[node name="RescueLabel" type="Label" parent="GameManager/Text"]
-visible = false
-offset_left = 1370.0
-offset_top = -197.0
-offset_right = 1662.0
-offset_bottom = -174.0
-theme_override_fonts/font = ExtResource("12_eaoke")
-text = "You Rescued She Bob!"
-
-[node name="HelpLabel" type="Label" parent="GameManager/Text"]
-offset_left = 1361.0
-offset_top = -175.0
-offset_right = 1523.0
-offset_bottom = -152.0
-theme_override_fonts/font = ExtResource("14_epuum")
-text = "Help me, Bob!"
+[node name="AntiBob" parent="Enemies" instance=ExtResource("4_akw7c")]
+position = Vector2(277, -11)
 
 [node name="8 bit place" parent="." instance=ExtResource("14_xxtbg")]
 position = Vector2(36, -25)
