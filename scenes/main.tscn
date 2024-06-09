@@ -362,6 +362,7 @@ shape = SubResource("WorldBoundaryShape2D_3gkjf")
 [node name="Platforms" type="Node" parent="World"]
 
 [node name="Platform" parent="World/Platforms" instance=ExtResource("3_28ixg")]
+visible = false
 position = Vector2(650, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="World/Platforms/Platform"]
@@ -410,11 +411,11 @@ position = Vector2(-99, -30)
 element = "ice"
 
 [node name="CardIce2" parent="World/Cards" instance=ExtResource("6_6mpsv")]
-position = Vector2(1072, -30)
+position = Vector2(932, -114)
 element = "ice"
 
 [node name="CardTeleport" parent="World/Cards" instance=ExtResource("6_6mpsv")]
-position = Vector2(-176, -72)
+position = Vector2(-513, -27)
 element = "teleport"
 
 [node name="MegaCard" parent="World/Cards" instance=ExtResource("14_yleam")]
@@ -499,7 +500,7 @@ text = "Help me, Bob!"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_nm2g3")]
-position = Vector2(167, -15)
+position = Vector2(-41, -11)
 
 [node name="Boss" parent="Enemies" instance=ExtResource("10_w4yr1")]
 position = Vector2(1575, -147)
