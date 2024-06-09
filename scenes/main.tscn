@@ -331,49 +331,10 @@ _data = {
 [node name="Main" type="Node"]
 script = ExtResource("1_2ml6p")
 
-[node name="Player" parent="." instance=ExtResource("2_2ciu8")]
-unique_name_in_owner = true
-position = Vector2(326, -53)
-SPEED = 200.0
-SPEED_DASH = 300.0
-TELEPORT_DIST = 80.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(118.571, 17.1429)
-scale = Vector2(1.42857, 1.42857)
-zoom = Vector2(3.5, 3.5)
-limit_bottom = 200
-
-[node name="HealthBar" parent="Player" instance=ExtResource("3_tnnck")]
-position = Vector2(-93.3333, -131.667)
-scale = Vector2(0.736855, 0.57536)
-
-[node name="HealthLabel" type="Label" parent="Player"]
-offset_left = -151.667
-offset_top = -135.0
-offset_right = -111.667
-offset_bottom = -112.0
-scale = Vector2(0.634651, 0.666007)
-theme_override_fonts/font = ExtResource("12_eaoke")
-text = "HP"
-
-[node name="SheBob" parent="." instance=ExtResource("11_t71a6")]
-position = Vector2(1502, -141)
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("8_nm2g3")]
-position = Vector2(167, -16)
-
-[node name="AntiBob" parent="Enemies" instance=ExtResource("4_akw7c")]
-position = Vector2(444, -11)
-
-[node name="Boss" parent="Enemies" instance=ExtResource("10_w4yr1")]
-position = Vector2(1448, -48)
-
 [node name="World" type="Node" parent="."]
 
 [node name="LevelX" parent="World" instance=ExtResource("3_0f7wx")]
+z_index = 0
 position = Vector2(-1328, -40)
 
 [node name="LevelTesting" type="TileMap" parent="World"]
@@ -453,6 +414,47 @@ element = "teleport"
 [node name="MegaCard" parent="World/Cards" instance=ExtResource("14_yleam")]
 position = Vector2(1201, -129)
 
+[node name="Player" parent="." instance=ExtResource("2_2ciu8")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(326, -53)
+SPEED = 200.0
+SPEED_DASH = 300.0
+TELEPORT_DIST = 80.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(118.571, 17.1429)
+scale = Vector2(1.42857, 1.42857)
+zoom = Vector2(3.5, 3.5)
+limit_bottom = 200
+
+[node name="HealthBar" parent="Player" instance=ExtResource("3_tnnck")]
+position = Vector2(-93.3333, -131.667)
+scale = Vector2(0.736855, 0.57536)
+
+[node name="HealthLabel" type="Label" parent="Player"]
+offset_left = -151.667
+offset_top = -135.0
+offset_right = -111.667
+offset_bottom = -112.0
+scale = Vector2(0.634651, 0.666007)
+theme_override_fonts/font = ExtResource("12_eaoke")
+text = "HP"
+
+[node name="SheBob" parent="." instance=ExtResource("11_t71a6")]
+position = Vector2(1502, -141)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("8_nm2g3")]
+position = Vector2(167, -16)
+
+[node name="AntiBob" parent="Enemies" instance=ExtResource("4_akw7c")]
+position = Vector2(444, -11)
+
+[node name="Boss" parent="Enemies" instance=ExtResource("10_w4yr1")]
+position = Vector2(1448, -48)
+
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -476,7 +478,7 @@ theme_override_fonts/font = ExtResource("14_epuum")
 text = "Help me, Bob!"
 
 [node name="8 bit place" parent="." instance=ExtResource("14_xxtbg")]
-position = Vector2(36, -24)
+position = Vector2(36, -25)
 
 [node name="8 bit hero" parent="8 bit place" instance=ExtResource("13_julrh")]
 position = Vector2(0, 15)
